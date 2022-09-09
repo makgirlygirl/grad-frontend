@@ -3,11 +3,19 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import ExamplePhoto from "../assets/main/example-photo.png";
 import { Link } from "react-router-dom";
+import Bank from "../assets/category/bank_unchecked.svg";
+import Creator from "../assets/category/creator_unchecked.svg";
+import Bank_checked from '../assets/category/bank_checked.svg';
+import Creator_checked from "../assets/category/creator_checked.svg";
 
 const MainPage = () => {
     return (
       <Wrapper>
           <Header/>
+          <CategoryWrapper>
+            <Link to='/bank'><img src={Bank} alt="bank_unchecked"/></Link>
+            <Link to='/creator'><img src={Creator} alt="creator_unchecked"/></Link>
+          </CategoryWrapper>
           <MainContent1>
             <div className='main-content-text-right'>
               <h1>
@@ -27,7 +35,7 @@ const MainPage = () => {
               수능 기출 변형 문제 은행
               </h2><br/>
               <Link to="/bank">
-                <h6>FIGMA 문제 은행 바로 가기 →</h6>
+                <h5 className="green-font">FIGMA 문제 은행 바로 가기 →</h5>
             </Link>
             </div>
           </MainContent2>
@@ -39,7 +47,7 @@ const MainPage = () => {
               자동 생성<br/>
               </h2><br/>
               <Link to="/creator">
-                <h6>실시간 문제 제작하러 가기 →</h6>
+                <h5 className="green-font">실시간 문제 제작하러 가기 →</h5>
               </Link>
             </div>
             <img src={ExamplePhoto}/>
@@ -87,4 +95,10 @@ const MainPage = () => {
     font-size: 50px;
     padding: 10%;
   `;
-  export default MainPage
+  const CategoryWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content : center;
+    padding: 2rem;
+  `;
+  export default MainPage;

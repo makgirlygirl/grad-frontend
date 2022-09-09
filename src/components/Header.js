@@ -8,9 +8,21 @@ import Bank_checked from '../assets/category/bank_checked.svg';
 import Creator_checked from "../assets/category/creator_checked.svg";
 
 const Header = () => {
+  
+    /*
     const [bankStatus, setBankStatus] = useState(false);
     const [creatorStatus, setCreatorStatus] = useState(false);
-
+    if (pageStatus === 'B'){ // Bank
+      setBankStatus(true);
+      setCreatorStatus(false);
+    } else if (pageStatus === 'C') { // Creator
+      setBankStatus(false);
+      setCreatorStatus(true);
+    } else { // A (Main page)
+      setBankStatus(false);
+      setCreatorStatus(false);
+    }
+    //
     const onClickBankStatus = () => {
       setBankStatus(true);
       setCreatorStatus(false);
@@ -23,7 +35,7 @@ const Header = () => {
       setBankStatus(false);
       setCreatorStatus(false);
     }
-    
+    */
     return (
       <Wrapper>
         <Bar>
@@ -31,28 +43,16 @@ const Header = () => {
         </Bar>
         <LogoWrapper>
           <Link to="/">
-            <img onClick={onClickMainLogo} src={Logo} alt="Logo"/>
+            <img src={Logo} alt="Logo"/>
           </Link>
         </LogoWrapper>
-        <CategoryWrapper>
-            {
-          bankStatus ?
-            <img src={Bank_checked} alt="bank_checked"/> : 
-            <img onClick={onClickBankStatus} src={Bank} alt="bank_unchecked"/>
-            }
-            {
-          creatorStatus ?
-            <img src={Creator_checked} alt="creator_checked"/> : 
-            <img src={Creator} alt="creator_unchecked"/>
-            }
-        </CategoryWrapper>
       </Wrapper>
     );
   };
   
 const Wrapper = styled.div`
   width: 100%;
-  height: 10%;
+  height: 5%;
 `;
 const LogoWrapper = styled.div`
   width: 100%;
@@ -68,15 +68,4 @@ const Bar = styled.div`
   color: white;
   padding-right: 2rem; 
 `;
-const CategoryWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content : center;
-  padding: 2rem;
-`;
-const Category = styled.img`
-  padding-left: 2%;
-  padding-right: 2%;
-`;
-
 export default Header;
