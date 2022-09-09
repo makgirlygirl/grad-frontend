@@ -1,19 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styled from 'styled-components';
-import Logo from '../assets/logo.jpg';
+import Logo from '../assets/main/logo.jpg';
+import Bank from "../assets/category/bank_unchecked.svg";
+import Creator from "../assets/category/creator_unchecked.svg";
+import Bank_checked from '../assets/category/bank_checked.svg';
+import Creator_checked from "../assets/category/creator_checked.svg";
 
 const Header = () => {
+    const [bankStatus, setBankStatus] = useState(false);
+    const [creatorStatus, setCreatorStatus] = useState(false);
+
+    const onClickBankStatus = () => {
+      setBankStatus(true);
+      setCreatorStatus(false);
+      }
+    const onClickCreatorStatus = () => {      
+      setBankStatus(false);
+      setCreatorStatus(true);
+    }
+    const onClickMainLogo = () => {
+      setBankStatus(false);
+      setCreatorStatus(false);
+    }
+    
     return (
       <Wrapper>
         <Bar>
         icon icon icon
         </Bar>
         <LogoWrapper>
-          <img src={Logo} alt="Logo"/>
+          <Link to="/">
+            <img onClick={onClickMainLogo} src={Logo} alt="Logo"/>
+          </Link>
         </LogoWrapper>
         <CategoryWrapper>
-            menu[1]
-            menu[2]
+            {
+          bankStatus ?
+            <img src={Bank_checked} alt="bank_checked"/> : 
+            <img onClick={onClickBankStatus} src={Bank} alt="bank_unchecked"/>
+            }
+            {
+          creatorStatus ?
+            <img src={Creator_checked} alt="creator_checked"/> : 
+            <img src={Creator} alt="creator_unchecked"/>
+            }
         </CategoryWrapper>
       </Wrapper>
     );

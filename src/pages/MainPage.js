@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Header from "../components/Header";
-import ExamplePhoto from "../assets/example-photo.png";
+import ExamplePhoto from "../assets/main/example-photo.png";
+import { Link } from "react-router-dom";
 
 const MainPage = () => {
     return (
@@ -25,7 +26,9 @@ const MainPage = () => {
               1,600+개의 <br/>
               수능 기출 변형 문제 은행
               </h2><br/>
-              <h6>FIGMA 문제 은행 바로 가기 →</h6>
+              <Link to="/bank">
+                <h6>FIGMA 문제 은행 바로 가기 →</h6>
+            </Link>
             </div>
           </MainContent2>
           <MainContent3>
@@ -35,7 +38,9 @@ const MainPage = () => {
               수능 유형의 문제<br/>
               자동 생성<br/>
               </h2><br/>
-              <h6>실시간 문제 제작하러 가기 →</h6>
+              <Link to="/creator">
+                <h6>실시간 문제 제작하러 가기 →</h6>
+              </Link>
             </div>
             <img src={ExamplePhoto}/>
           </MainContent3>
