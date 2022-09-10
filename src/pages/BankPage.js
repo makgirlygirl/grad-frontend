@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from 'styled-components';
 import Header from "../components/Header";
 import Bank from "../assets/category/bank_unchecked.svg";
@@ -9,11 +9,20 @@ import { Link } from "react-router-dom";
 import Step1_Question from "../assets/bank/bank_step1.svg";
 import Step2_Question from "../assets/bank/bank_step2.svg";
 import Arrow from '../assets/main/arrow.svg';
-import u1 from "../assets/questionType/unchecked/type1.svg";
-import u2 from "../assets/questionType/unchecked/type2.svg";
+import { u1, u2, u3, u4, u5, u6, u7, u8 } from '../components/FileIndex';
+import { c1, c2, c3, c4, c5, c6, c7, c8 } from '../components/FileIndex';
+import QuestionType from "../components/QuestionType";
 
 
 const BankPage = () => {
+    const [type1, setType1] = useState(false);
+    const OnClickType1 = () => {
+        setType1(!type1);
+    };
+    const [type2, setType2] = useState(false);
+    const OnClickType2 = () => {
+        setType2(!type2);
+    };
     return (
       <Wrapper>
       <Header/>
@@ -23,10 +32,22 @@ const BankPage = () => {
         </CategoryWrapper>
         <BoxWrapper>
             <TextWrapper><img src={Step1_Question}/></TextWrapper>
-            <TypeWrapper><Type src={u1}/> <Type src={u2}/></TypeWrapper>
-            <TypeWrapper><Type src={u1}/> <Type src={u2}/></TypeWrapper>
-            <TypeWrapper><Type src={u1}/> <Type src={u2}/></TypeWrapper>
-            <TypeWrapper><Type src={u1}/> <Type src={u2}/></TypeWrapper>
+            <TypeWrapper>
+                <QuestionType checked={type1} onClick={OnClickType1} img_checked={c1} img_unchecked={u1}/> 
+                <QuestionType checked={type2} onClick={OnClickType2} img_checked={c2} img_unchecked={u2}/> 
+            </TypeWrapper>
+            <TypeWrapper>
+                <Type src={u3}/>
+                <Type src={u4}/>
+            </TypeWrapper>
+            <TypeWrapper>
+                <Type src={u5}/>
+                <Type src={u6}/>
+            </TypeWrapper>
+            <TypeWrapper>
+                <Type src={u7}/>
+                <Type src={u8}/>
+            </TypeWrapper>
             <TextWrapper><img src={Arrow}/></TextWrapper>
         </BoxWrapper>
         <TypeWrapper>
