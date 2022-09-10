@@ -23,6 +23,16 @@ const BankPage = () => {
     const OnClickType2 = () => {
         setType2(!type2);
     };
+    /*
+    const [stackList, setStackList] = useState(developerStackList);
+    const _onToggleStack = (id) => {
+        setStackList(
+        stackList.map((stack) =>
+            stack.id === id ? { ...stack, checked: !stack.checked } : stack,
+        ),
+        );
+    };
+    */
     return (
       <Wrapper>
       <Header/>

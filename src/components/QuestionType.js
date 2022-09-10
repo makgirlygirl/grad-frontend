@@ -10,10 +10,11 @@ const QuestionType = ({checked, onClick, img_unchecked, img_checked}) => (
     }
     </>
 )
-
 const Type = styled.img`    
     padding: 0.5rem;
     padding-left: 2rem;
     padding-right: 2rem;
 `;
 export default QuestionType;
+
+//onMouseOver={onClick} onMouseLeave={onClick} 
