@@ -24,6 +24,9 @@ a {
   display: block;
   padding: 3% 3% 3% 10%;
 }
+.green-font {
+  color: #018133;
+}
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
