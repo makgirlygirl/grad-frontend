@@ -2,21 +2,25 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
-export const UpperBox = ({title, type}) => {
+export const UpperBox = ({id, title, type}) => {
     return (
-        <UpperBoxDesign>
-            <Title>{title}</Title>
+        <UpperBoxStyle>
+            <Title>#{id+1} {title}</Title>
             <Type>{type}</Type>
-        </UpperBoxDesign>
-    );
+        </UpperBoxStyle>
+    ); //<UpperBox id={id} title={title} type={type}/>
 };
-const QuestionBox = ({title, type, paragraph, choiceList, answer}) => {
-
+const QuestionBox = (questionList) => {
+// {id, title, type, paragraph, choiceList}
+// questionList.paragraph
+// questionList.choiceList
     return (
         <Wrapper>
             <BoxWrapper>
-                <UpperBox title="{title}" type={type}/>
-                <Box/>
+                <UpperBox id={questionList.id} title={questionList.title} type={questionList.type}/>
+                <Box>
+                    
+                </Box>
             </BoxWrapper>
         </Wrapper>
     );
@@ -44,7 +48,7 @@ const Box = styled.div`
     min-height: 446px;
     border: 1px solid #999999;
 `;
-const UpperBoxDesign = styled.div`
+const UpperBoxStyle = styled.div`
     box-sizing: border-box;
     width: 100%;
     min-height: 10%;
@@ -57,11 +61,13 @@ const UpperBoxDesign = styled.div`
     border-radius: 5px;
     
 `;
-const Title = styled.div`
+const Title = styled.span`
+    font-family: 'Noto Sans KR';
 
 `;
 const Type = styled.img`
-
+    /* 오른쪽 정렬 */
+    text-align: right;
 `;
 const Paragraph = styled.div`
 
