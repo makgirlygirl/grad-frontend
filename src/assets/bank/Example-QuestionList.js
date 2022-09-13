@@ -17,7 +17,7 @@ export const ExampleQuestionList = [
             dis4: `In other words, the conclusion of science comes from a very small study.`,
         } // 나중에 이걸 프론트 단에서 랜덤으로 섞는다
     },
-    {id:1, title:"다음 글의 목적으로 가장 적절한 것은?", type:0, 
+    {id:1, title:"아래의 B는 다음 A의 지문을 요약한 문단이다. 요약문의 빈칸에 들어갈 어휘를 고르시오.", type:7, 
         paragraph: `Philip Kitcher and Wesley Salmon have suggested that there are two possible alternatives among philosophical theories of explanation.
         One is the view that scientific explanation consists in the unification of broad bodies of phenomena under a minimal number of generalizations.
         According to this view, the (or perhaps, a) goal of science is to construct an economical framework of laws or generalizations that are capable of subsuming all observable phenomena.
