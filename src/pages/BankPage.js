@@ -15,9 +15,6 @@ import QuestionTypeButton from "../components/QuestionTypeButton";
 import QuestionTypeList, { bankQuestionTypeList } from "../assets/bank/QuestionTypeList";
 
 const BankPage = () => {
-    const uncheckedButtonList = [u1, u2, u3, u4, u5, u6, u7, u8];
-    const checkedButtonList = [c1, c2, c3, c4, c5, c6, c7, c8];
-
     const [questionTypeList, setQuestionTypeList] = useState(bankQuestionTypeList);
     const onClickType = (id) => {
         setQuestionTypeList(
@@ -25,18 +22,7 @@ const BankPage = () => {
             it.id === id ? { ...it, checked: !it.checked } : it,
             ),
         );
-        console.log(id);
-        /*
-        useEffect(()=>{
-            setQuestionTypeList(
-                questionTypeList.map((questionType) =>
-                questionType.id === id ? { ...questionType, checked: !questionType.checked } : questionType,
-                ),
-            );
-            console.log(id);
-            console.log(questionTypeList[id].checked);
-        }, []);
-        */
+        console.log(questionTypeList);
     };
     return (
       <Wrapper>
