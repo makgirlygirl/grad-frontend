@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import Header from "../components/Header";
 import Bank from "../assets/category/bank_unchecked.svg";
@@ -11,28 +11,33 @@ import Step2_Question from "../assets/bank/bank_step2.svg";
 import Arrow from '../assets/main/arrow.svg';
 import { u1, u2, u3, u4, u5, u6, u7, u8 } from '../components/FileIndex';
 import { c1, c2, c3, c4, c5, c6, c7, c8 } from '../components/FileIndex';
-import QuestionType from "../components/QuestionType";
-
+import QuestionTypeButton from "../components/QuestionTypeButton";
+import QuestionTypeList, { bankQuestionTypeList } from "../assets/bank/QuestionTypeList";
 
 const BankPage = () => {
-    const [type1, setType1] = useState(false);
-    const OnClickType1 = () => {
-        setType1(!type1);
-    };
-    const [type2, setType2] = useState(false);
-    const OnClickType2 = () => {
-        setType2(!type2);
-    };
-    /*
-    const [stackList, setStackList] = useState(developerStackList);
-    const _onToggleStack = (id) => {
-        setStackList(
-        stackList.map((stack) =>
-            stack.id === id ? { ...stack, checked: !stack.checked } : stack,
-        ),
+    const uncheckedButtonList = [u1, u2, u3, u4, u5, u6, u7, u8];
+    const checkedButtonList = [c1, c2, c3, c4, c5, c6, c7, c8];
+
+    const [questionTypeList, setQuestionTypeList] = useState(bankQuestionTypeList);
+    const onClickType = (id) => {
+        setQuestionTypeList(
+            questionTypeList.map((it) =>
+            it.id === id ? { ...it, checked: !it.checked } : it,
+            ),
         );
+        console.log(id);
+        /*
+        useEffect(()=>{
+            setQuestionTypeList(
+                questionTypeList.map((questionType) =>
+                questionType.id === id ? { ...questionType, checked: !questionType.checked } : questionType,
+                ),
+            );
+            console.log(id);
+            console.log(questionTypeList[id].checked);
+        }, []);
+        */
     };
-    */
     return (
       <Wrapper>
       <Header/>
@@ -43,20 +48,7 @@ const BankPage = () => {
         <BoxWrapper>
             <TextWrapper><img src={Step1_Question}/></TextWrapper>
             <TypeWrapper>
-                <QuestionType checked={type1} onClick={OnClickType1} img_checked={c1} img_unchecked={u1}/> 
-                <QuestionType checked={type2} onClick={OnClickType2} img_checked={c2} img_unchecked={u2}/> 
-            </TypeWrapper>
-            <TypeWrapper>
-                <Type src={u3}/>
-                <Type src={u4}/>
-            </TypeWrapper>
-            <TypeWrapper>
-                <Type src={u5}/>
-                <Type src={u6}/>
-            </TypeWrapper>
-            <TypeWrapper>
-                <Type src={u7}/>
-                <Type src={u8}/>
+                <QuestionTypeList onClick={onClickType} questionTypeList={questionTypeList}/>
             </TypeWrapper>
             <TextWrapper><img src={Arrow}/></TextWrapper>
         </BoxWrapper>
