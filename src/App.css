@@ -27,6 +27,8 @@ a {
 .green-font {
   color: #018133;
 }
+
+/* ================== MEDIA QUERY ================== */
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
