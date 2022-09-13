@@ -67,6 +67,7 @@ const MainPage = () => {
     background: rgba(0, 173, 69, 0.8);
     padding: 5%;
     justify-content:center;
+    color: #24303C;
   `;
   const MainContent2 = styled.div`
     width: 100%;
