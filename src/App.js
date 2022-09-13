@@ -4,6 +4,7 @@ import './App.css';
 import MainPage from './pages/MainPage';
 import BankPage from './pages/BankPage';
 import CreatorPage from './pages/CreatorPage';
+import BankResultPage from './pages/BankResultPage';
 
 const App = () => {
     return (
@@ -12,6 +13,7 @@ const App = () => {
           <Route element={<MainPage/>} exact path="/"/>
           <Route element={<BankPage/>} exact path="/bank"/>
           <Route element={<CreatorPage/>} exact path="/creator"/>
+          <Route element={<BankResultPage/>} exact path="/bank/result"/>
       </Routes>
       </>
     );
