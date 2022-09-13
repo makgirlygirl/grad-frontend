@@ -9,9 +9,6 @@ import { Link } from "react-router-dom";
 import Step1_Question from "../assets/bank/bank_step1.svg";
 import Step2_Question from "../assets/bank/bank_step2.svg";
 import Arrow from '../assets/main/arrow.svg';
-import { u1, u2, u3, u4, u5, u6, u7, u8 } from '../components/FileIndex';
-import { c1, c2, c3, c4, c5, c6, c7, c8 } from '../components/FileIndex';
-import QuestionTypeButton from "../components/QuestionTypeButton";
 import QuestionTypeList, { bankQuestionTypeList } from "../assets/bank/QuestionTypeList";
 
 const BankPage = () => {
@@ -33,9 +30,7 @@ const BankPage = () => {
         </CategoryWrapper>
         <BoxWrapper>
             <TextWrapper><img src={Step1_Question}/></TextWrapper>
-            <TypeWrapper>
-                <QuestionTypeList onClick={onClickType} questionTypeList={questionTypeList}/>
-            </TypeWrapper>
+            <QuestionTypeList onClick={onClickType} questionTypeList={questionTypeList}/>
             <TextWrapper><img src={Arrow}/></TextWrapper>
         </BoxWrapper>
         <TypeWrapper>
@@ -70,15 +65,4 @@ const TypeWrapper = styled.div`
     display: flex;
     justify-content:center;
 `;
-const Type = styled.img`    
-    padding: 0.5rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-`;
-const Question = styled.div`
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 1000;
-    font-size: 25px;
-`; // <Question>Step 1. 검색할 문제의 유형을 선택하세요.</Question><br/>
 export default BankPage;

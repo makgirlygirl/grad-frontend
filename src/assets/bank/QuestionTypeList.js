@@ -1,9 +1,8 @@
-/** */
-import { u1, u2, u3, u4, u5, u6, u7, u8 } from '../../components/FileIndex';
-import { c1, c2, c3, c4, c5, c6, c7, c8 } from '../../components/FileIndex';
+import React from "react";
+import styled from "styled-components";
 import QuestionTypeButton from "../../components/QuestionTypeButton";
 
-export const bankQuestionTypeList = [
+export const bankQuestionTypeList = [ //초기값
     {id:0, checked: false},
     {id:1, checked: false},
     {id:2, checked: false},
@@ -14,15 +13,20 @@ export const bankQuestionTypeList = [
     {id:7, checked: false},
 ];
 const QuestionTypeList = ({onClick, questionTypeList}) => {
-    const uncheckedButtonList = [u1, u2, u3, u4, u5, u6, u7, u8];
-    const checkedButtonList = [c1, c2, c3, c4, c5, c6, c7, c8];
-
     return (
         <>
         {questionTypeList.map((it) => (
-                    <QuestionTypeButton key={it.id} {...it} onClick={onClick} img_unchecked={uncheckedButtonList[it]} img_checked={checkedButtonList[it]}/>
-                ))}
+                <TypeWrapper>
+                    <QuestionTypeButton key={it.id} {...it} onClick={onClick}/>
+                </TypeWrapper>
+        ))}
         </>
     );
 };
 export default QuestionTypeList;
+
+const TypeWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content:center;
+`;
