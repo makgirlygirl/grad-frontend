@@ -11,28 +11,28 @@ import QuestionTypeList, { bankQuestionTypeList } from "../assets/bank/QuestionT
 
 const BankPage = () => {
     var qObject = new Object(); //다음 페이지로 값 전달하기 위한 변수
-    const navigate = useNavigate();
     let isComplete = false; // 모든 필드가 입력 되었는가?
+    const navigate = useNavigate();
 
-    const [questionTypeList, setQuestionTypeList] = useState(bankQuestionTypeList);
+    const [qTypeList, setQTypeList] = useState(bankQuestionTypeList);
     const onClickType = (id) => {
-        setQuestionTypeList(
-            questionTypeList.map((it) =>
+        setQTypeList(
+            qTypeList.map((it) =>
             it.id === id ? { ...it, checked: !it.checked } : it,
             ),
         );
     };
-    const [questionNum, setQuestionNum] = useState(0);
-    const onChangeQuestionNum = (e) => {
-        setQuestionNum(e.target.value);
+    const [qNum, setQNum] = useState(0);
+    const onChangeQNum = (e) => {
+        setQNum(e.target.value);
     }
-    const generateRequestDto = (questionTypeList, questionNum) => {
-        if(questionTypeList===bankQuestionTypeList || questionNum===0){
+    const generateRequestDto = (qTypeList, qNum) => {
+        if(qTypeList===bankQuestionTypeList || qNum===0){
             isComplete=false;
         } else{
             isComplete=true;
-            qObject.qTypeList = questionTypeList;
-            qObject.qNum = questionNum;
+            qObject.qTypeList = qTypeList;
+            qObject.qNum = qNum;
         }
     }
     const submitInput = async(input) => {
@@ -59,16 +59,16 @@ const BankPage = () => {
         </CategoryWrapper>
         <div>
             <TextWrapper><img src={Step1_Question}/></TextWrapper>
-            <QuestionTypeList onClick={onClickType} questionTypeList={questionTypeList}/>
+            <QuestionTypeList key="qTypeList" onClick={onClickType} qTypeList={qTypeList}/>
         </div>
         <TextWrapper><img src={Arrow}/></TextWrapper>
         <div>
         <TextWrapper><img src={Step2_Question}/></TextWrapper>
         <TypeWrapper>
             <InputLine
-                key="questionNum"
-                value={questionNum}
-                onChange={onChangeQuestionNum}
+                key="qNum"
+                value={qNum}
+                onChange={onChangeQNum}
             />
             <TextWrapper>개</TextWrapper>
         </TypeWrapper>
@@ -76,7 +76,7 @@ const BankPage = () => {
         <TextWrapper><img src={Arrow}/></TextWrapper>
         <QuestionWrapper>
             <Button onClick={() => {
-                  generateRequestDto(questionTypeList, questionNum);
+                  generateRequestDto(qTypeList, qNum);
                   submitInput(qObject);
                 }}>GO!</Button>
         </QuestionWrapper>
