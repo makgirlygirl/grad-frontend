@@ -8,20 +8,21 @@ import QuestionBox from "../components/QuestionBox";
 import { ExampleQuestionList } from "../assets/bank/Example-QuestionList";
 
 const BankResultPage = () => {
-    /*
     const location = useLocation();
     const navigate = useNavigate();
-    const [typeList, setTypeList] = useState({});
-    const [numOfQuestions, setNumOfQuestions] = useState(0);
+    const [qObject, setQObject] = useState({});
+    //const [qTypeList, setQTypeList] = useState({});
+    //const [qNum, setQNum] = useState(0);
     useEffect(()=> {
-        setTypeList(location.state.typeListValue); //location.state
-        setNumOfQuestions(location.state.questionNumValue);
+        setQObject(location.state.inputValue);
+        console.log(qObject);
+        //setQTypeList(location.state.inputValue.); //location.state
+        //setQNum(location.state.inputValue.);
     }, [location]);
     // 예시--> [글의 목적/주제 찾기] 유형, [요약문] 유형의 문제 [20]개를 찾았어요!
-    */
     const [questionList, setQuestionList] = useState(ExampleQuestionList);
     
-        /* GET API 동기 방식으로 받아오면 useEffect로 setQuestionList 해주는 내용 추가하기!! */
+        /* GET API 동기 방식으로 받아오면 useEffect로 setQuestionList 해주는 내용 추가하기 */
 
     return (
         <>
@@ -32,7 +33,8 @@ const BankResultPage = () => {
         </CategoryWrapper>
         <BoxWrapper>
             <Description>
-                <GR>글의 목적/주제 찾기</GR> 유형, <GR>요약문</GR> 유형의 문제 <GR>20</GR>개를 찾았어요!
+                <GR>글의 목적/주제 찾기</GR> 유형, <GR>요약문</GR> 유형의 
+                문제 <GR>20</GR>개를 찾았어요!
             </Description>
             <>
             {

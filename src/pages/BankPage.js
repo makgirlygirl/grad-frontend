@@ -3,13 +3,17 @@ import styled from 'styled-components';
 import Header from "../components/Header";
 import Creator from "../assets/category/creator_unchecked.svg";
 import Bank_checked from '../assets/category/bank_checked.svg';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Step1_Question from "../assets/bank/bank_step1.svg";
 import Step2_Question from "../assets/bank/bank_step2.svg";
 import Arrow from '../assets/main/arrow.svg';
 import QuestionTypeList, { bankQuestionTypeList } from "../assets/bank/QuestionTypeList";
 
 const BankPage = () => {
+    var qObject = new Object(); //다음 페이지로 값 전달하기 위한 변수
+    const navigate = useNavigate();
+    let isComplete = false; // 모든 필드가 입력 되었는가?
+
     const [questionTypeList, setQuestionTypeList] = useState(bankQuestionTypeList);
     const onClickType = (id) => {
         setQuestionTypeList(
@@ -17,11 +21,34 @@ const BankPage = () => {
             it.id === id ? { ...it, checked: !it.checked } : it,
             ),
         );
-        console.log(questionTypeList);
     };
     const [questionNum, setQuestionNum] = useState(0);
     const onChangeQuestionNum = (e) => {
         setQuestionNum(e.target.value);
+    }
+    const generateRequestDto = (questionTypeList, questionNum) => {
+        if(questionTypeList===bankQuestionTypeList || questionNum===0){
+            isComplete=false;
+        } else{
+            isComplete=true;
+            qObject.qTypeList = questionTypeList;
+            qObject.qNum = questionNum;
+        }
+    }
+    const submitInput = async(input) => {
+        if(!isComplete) {
+            console.log("incomplete input");
+            // 뒤로 넘기지 않고, alert 보내주기
+        } else {
+            console.log(input);
+            navigate(`/bank/result`, { state: { inputValue:input } });
+            /*
+            let response = await axios.post(`${SERVER_ADDR}/bank`, input);
+            navigate(`/bank/result`, { state: { inputValue:input, responseValue:response.data } })
+            // userId (성공적으로 post되면 자동생성되는 값)도 같이 보내준다
+            */
+        }
+
     }
     return (
       <Wrapper>
@@ -48,9 +75,10 @@ const BankPage = () => {
         </div>
         <TextWrapper><img src={Arrow}/></TextWrapper>
         <QuestionWrapper>
-            <Link to="/bank/result">
-                <Button>GO!</Button>
-            </Link>
+            <Button onClick={() => {
+                  generateRequestDto(questionTypeList, questionNum);
+                  submitInput(qObject);
+                }}>GO!</Button>
         </QuestionWrapper>
       </Wrapper>
       
