@@ -4,6 +4,7 @@ body {
   margin: 0;
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 18px;
+  background: white;
 }
 
 a {
@@ -30,11 +31,7 @@ a {
 
 /* ================== MEDIA QUERY ================== */
 @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
   body {
-    color: white;
-    background: black;
+    background: white;
   }
 }

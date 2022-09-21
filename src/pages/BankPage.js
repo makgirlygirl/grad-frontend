@@ -3,25 +3,47 @@ import styled from 'styled-components';
 import Header from "../components/Header";
 import Creator from "../assets/category/creator_unchecked.svg";
 import Bank_checked from '../assets/category/bank_checked.svg';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Step1_Question from "../assets/bank/bank_step1.svg";
 import Step2_Question from "../assets/bank/bank_step2.svg";
 import Arrow from '../assets/main/arrow.svg';
 import QuestionTypeList, { bankQuestionTypeList } from "../assets/bank/QuestionTypeList";
 
 const BankPage = () => {
-    const [questionTypeList, setQuestionTypeList] = useState(bankQuestionTypeList);
+    var qObject = new Object(); //다음 페이지로 값 전달하기 위한 변수
+    let isComplete = false; // 모든 필드가 입력 되었는가?
+    const navigate = useNavigate();
+
+    const [qTypeList, setQTypeList] = useState(bankQuestionTypeList);
     const onClickType = (id) => {
-        setQuestionTypeList(
-            questionTypeList.map((it) =>
+        setQTypeList(
+            qTypeList.map((it) =>
             it.id === id ? { ...it, checked: !it.checked } : it,
             ),
         );
-        console.log(questionTypeList);
     };
-    const [questionNum, setQuestionNum] = useState(0);
-    const onChangeQuestionNum = (e) => {
-        setQuestionNum(e.target.value);
+    const [qNum, setQNum] = useState(0);
+    const onChangeQNum = (e) => {
+        setQNum(e.target.value);
+    }
+    const generateRequestDto = (qTypeList, qNum) => {
+        if(qTypeList===bankQuestionTypeList || qNum===0){
+            isComplete=false;
+        } else{
+            isComplete=true;
+            qObject.qTypeList = qTypeList;
+            qObject.qNum = qNum;
+        }
+    }
+    const submitInput = async(input) => {
+        if(!isComplete) {
+            console.log("incomplete input");
+            // 뒤로 넘기지 않고, alert 보내주기
+        } else {
+            console.log(input);
+            navigate("/bank/result", { state: { inputValue:input } });
+        }
+
     }
     return (
       <Wrapper>
@@ -32,25 +54,26 @@ const BankPage = () => {
         </CategoryWrapper>
         <div>
             <TextWrapper><img src={Step1_Question}/></TextWrapper>
-            <QuestionTypeList onClick={onClickType} questionTypeList={questionTypeList}/>
+            <QuestionTypeList key="qTypeList" onClick={onClickType} qTypeList={qTypeList}/>
         </div>
         <TextWrapper><img src={Arrow}/></TextWrapper>
         <div>
         <TextWrapper><img src={Step2_Question}/></TextWrapper>
         <TypeWrapper>
             <InputLine
-                key="questionNum"
-                value={questionNum}
-                onChange={onChangeQuestionNum}
+                key="qNum"
+                value={qNum}
+                onChange={onChangeQNum}
             />
             <TextWrapper>개</TextWrapper>
         </TypeWrapper>
         </div>
         <TextWrapper><img src={Arrow}/></TextWrapper>
         <QuestionWrapper>
-            <Link to="/bank/result">
-                <Button>GO!</Button>
-            </Link>
+            <Button onClick={() => {
+                  generateRequestDto(qTypeList, qNum);
+                  submitInput(qObject);
+                }}>GO!</Button>
         </QuestionWrapper>
       </Wrapper>
       

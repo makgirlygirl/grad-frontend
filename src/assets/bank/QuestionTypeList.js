@@ -12,10 +12,10 @@ export const bankQuestionTypeList = [ //초기값
     {id:6, checked: false},
     {id:7, checked: false},
 ];
-const QuestionTypeList = ({onClick, questionTypeList}) => {
+const QuestionTypeList = ({onClick, qTypeList}) => {
     return (
         <>
-        {questionTypeList.map((it) => (
+        {qTypeList.map((it) => (
                 <TypeWrapper>
                     <QuestionTypeButton key={it.id} {...it} onClick={onClick}/>
                 </TypeWrapper>
