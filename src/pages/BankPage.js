@@ -10,8 +10,8 @@ import Arrow from '../assets/main/arrow.svg';
 import QuestionTypeList, { bankQuestionTypeList } from "../assets/bank/QuestionTypeList";
 
 const BankPage = () => {
-    var qObject = new Object(); //다음 페이지로 값 전달하기 위한 변수
-    let isComplete = false; // 모든 필드가 입력 되었는가?
+    //var qObject = new Object(); //다음 페이지로 값 전달하기 위한 변수
+    //let isComplete = false; // 모든 필드가 입력 되었는가?
     const navigate = useNavigate();
 
     const [qTypeList, setQTypeList] = useState(bankQuestionTypeList);
@@ -26,22 +26,12 @@ const BankPage = () => {
     const onChangeQNum = (e) => {
         setQNum(e.target.value);
     }
-    const generateRequestDto = (qTypeList, qNum) => {
+    const submitInput = async(qTypeList, qNum) => {
         if(qTypeList===bankQuestionTypeList || qNum===0){
-            isComplete=false;
-        } else{
-            isComplete=true;
-            qObject.qTypeList = qTypeList;
-            qObject.qNum = qNum;
-        }
-    }
-    const submitInput = async(input) => {
-        if(!isComplete) {
             console.log("incomplete input");
             // 뒤로 넘기지 않고, alert 보내주기
         } else {
-            console.log(input);
-            navigate("/bank/result", { state: { inputValue:input } });
+            navigate("/bank/result", { state: { qTypeListValue:qTypeList, qNumValue:qNum } });
         }
 
     }
@@ -71,8 +61,7 @@ const BankPage = () => {
         <TextWrapper><img src={Arrow}/></TextWrapper>
         <QuestionWrapper>
             <Button onClick={() => {
-                  generateRequestDto(qTypeList, qNum);
-                  submitInput(qObject);
+                  submitInput(qTypeList, qNum);
                 }}>GO!</Button>
         </QuestionWrapper>
       </Wrapper>
