@@ -13,20 +13,16 @@ const BankResultPage = () => {
     const navigate = useNavigate();
     const [questionList, setQuestionList] = useState(ExampleQuestionList);
 
-    const [qTypeList, setQTypeList] = useState(bankQuestionTypeList);
+    const [qType, setQType] = useState(0);
     const [qNum, setQNum] = useState(0);
 
-    //const [qObject, setQObject] = useState({});
     useEffect(()=> {
-        setQTypeList(location.state.qTypeListValue);
+        setQType(location.state.qTypeValue);
         setQNum(location.state.qNumValue);
         
         /* GET API 동기 방식으로 받아오면 useEffect로 setQuestionList 해주는 내용 추가하기 */
 
     }, [location]);
-    // 예시--> [글의 목적/주제 찾기] 유형, [요약문] 유형의 문제 [20]개를 찾았어요!
-    //const qTypeList = qObject.qTypeList;
-    //const qNum = qObject.qNum;
 
     return (
         <>
@@ -37,14 +33,14 @@ const BankResultPage = () => {
         </CategoryWrapper>
         <BoxWrapper>
             <Description>
-                <GR>글의 목적/주제 찾기</GR> 유형, <GR>요약문</GR> 유형의 
+                <GR>{bankQuestionTypeList[qType].label}</GR> 유형의 
                 문제 <GR>{qNum}</GR>개를 찾았어요!
             </Description>
             <>
             {
                 questionList.map((it) => ( //{id, title, type, paragraph, choiceList}
                     <QuestionBox key={it.id} id={it.id} title={it.title} type={it.type} paragraph={it.paragraph} choiceList={it.choiceList}/>
-                    )        
+                    )
                 )
             }
             </>

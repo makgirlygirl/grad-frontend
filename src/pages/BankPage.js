@@ -16,9 +16,11 @@ const BankPage = () => {
 
     const [qTypeList, setQTypeList] = useState(bankQuestionTypeList);
     const onClickType = (id) => {
+        // 선택된 것 빼고는 모두 unchecked 되도록
+        
         setQTypeList(
-            qTypeList.map((it) =>
-            it.id === id ? { ...it, checked: !it.checked } : it,
+            qTypeList.map((it)=>
+            it.id === id ? { ...it, checked: false } : it,
             ),
         );
     };
@@ -31,7 +33,9 @@ const BankPage = () => {
             console.log("incomplete input");
             // 뒤로 넘기지 않고, alert 보내주기
         } else {
-            navigate("/bank/result", { state: { qTypeListValue:qTypeList, qNumValue:qNum } });
+            /// 타입리스트 중 true 인 것 찾아서 qType 변수에 저장 하는 코드 추가하기
+            const qType = 1; // 수정 필요!!
+            navigate("/bank/result", { state: { qTypeValue:qType, qNumValue:qNum } });
         }
 
     }
