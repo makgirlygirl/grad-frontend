@@ -10,14 +10,14 @@ import { ExampleQuestionList } from "../assets/bank/Example-QuestionList";
 const BankResultPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const [qObject, setQObject] = useState({});
-    //const [qTypeList, setQTypeList] = useState({});
-    //const [qNum, setQNum] = useState(0);
+    //const [qObject, setQObject] = useState({});
+    //const qTypeList = qObject.qTypeList;
+    //const qNum = qObject.qNum;
     useEffect(()=> {
-        setQObject(location.state.inputValue);
+        //setQObject(location.state.inputValue); //여기로 값이 안 들어옴....
+        //console.log(location.state.inputValue); //이건 제대로 출력됨!!
+        const qObject = location.state.inputValue;
         console.log(qObject);
-        //setQTypeList(location.state.inputValue.); //location.state
-        //setQNum(location.state.inputValue.);
     }, [location]);
     // 예시--> [글의 목적/주제 찾기] 유형, [요약문] 유형의 문제 [20]개를 찾았어요!
     const [questionList, setQuestionList] = useState(ExampleQuestionList);

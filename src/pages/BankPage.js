@@ -41,12 +41,7 @@ const BankPage = () => {
             // 뒤로 넘기지 않고, alert 보내주기
         } else {
             console.log(input);
-            navigate(`/bank/result`, { state: { inputValue:input } });
-            /*
-            let response = await axios.post(`${SERVER_ADDR}/bank`, input);
-            navigate(`/bank/result`, { state: { inputValue:input, responseValue:response.data } })
-            // userId (성공적으로 post되면 자동생성되는 값)도 같이 보내준다
-            */
+            navigate("/bank/result", { state: { inputValue:input } });
         }
 
     }
