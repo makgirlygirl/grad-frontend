@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { u1, u2, u3, u4, u5, u6, u7, u8 } from './FileIndex';
 import { c1, c2, c3, c4, c5, c6, c7, c8 } from './FileIndex';
 
+// 버튼 하나를 구현
 const QuestionTypeButton = ({id, onClick}) => {
     
     const uncheckedButtonList = [u1, u2, u3, u4, u5, u6, u7, u8];
