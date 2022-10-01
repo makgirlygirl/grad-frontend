@@ -39,10 +39,9 @@ const BankResultPage = () => {
         fetchData(qType, qNum);
     }, [location]);
 
-    
-  const LoadMore = () => {
-    setPostNum(prev => prev + 10);
-  }
+    const LoadMore = () => {
+        setPostNum(prev => prev + 10);
+    }
     return (
         <>
         <Header/>
@@ -65,8 +64,10 @@ const BankResultPage = () => {
         </Description>
             <>
             {
-                questionList.slice(0,postNum).map((it) => ( //{id, title, type, paragraph, choiceList}
-                    <QuestionBox key={it.id} id={it.id} title={it.title} type={it.type} paragraph={it.paragraph} choiceList={it.choiceList}/>
+                questionList.slice(0,postNum).map((it) => ( 
+                    // {questionID, passageID, question_type, question, new_passage, answer, d1,d2,d3,d4}
+                    <QuestionBox key={it.questionID} id={it.questionID} title={it.question} type={it.question_type} 
+                     paragraph={it.new_passage} answer={it.answer} d1={it.d1} d2={it.d2} d3={it.d3} d4={it.d4} />
                     )
                 )
             }

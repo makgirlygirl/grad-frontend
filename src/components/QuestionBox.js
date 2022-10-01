@@ -11,20 +11,33 @@ export const UpperBox = ({id, title, type}) => {
         </UpperBoxStyle>
     ); 
 };
-const QuestionBox = ({id, title, type, paragraph, choiceList}) => {
-    const questionTypeList = [u1, u2, u3, u4, u5, u6, u7, u8];
 
+// {questionID, passageID, question_type, question, new_passage, answer, d1,d2,d3,d4}
+const QuestionBox = ({id, title, type, paragraph, answer, d1,d2,d3,d4}) => {
+    const questionTypeList = [u1, u2, u3, u4, u5, u6, u7, u8];
+    const shuffleArray = array => {
+        for (let i = 0; i < array.length; i++) {
+          let j = Math.floor(Math.random() * (i + 1));
+          // [array[i], array[j]] = [array[j], array[i]];
+          const x = array[i];
+          array[i] = array[j];
+          array[j] = x;
+        }
+        return array;
+      };
+    let choiceList = [answer, d1,d2,d3,d4];
+    shuffleArray(choiceList);
     return (
         <Wrapper>
             <BoxWrapper>
                 <UpperBox id={id} title={title} type={questionTypeList[type]}/>
                 <Box>
                     <Paragraph>{paragraph}</Paragraph>
-                    <ChoiceList>① {choiceList.ans}</ChoiceList><br/>
-                    <ChoiceList>② {choiceList.dis1}</ChoiceList><br/>
-                    <ChoiceList>③ {choiceList.dis2}</ChoiceList><br/>
-                    <ChoiceList>④ {choiceList.dis3}</ChoiceList><br/>
-                    <ChoiceList>⑤ {choiceList.dis4}</ChoiceList><br/>
+                    <ChoiceList>① {choiceList[0]}</ChoiceList><br/>
+                    <ChoiceList>② {choiceList[1]}</ChoiceList><br/>
+                    <ChoiceList>③ {choiceList[2]}</ChoiceList><br/>
+                    <ChoiceList>④ {choiceList[3]}</ChoiceList><br/>
+                    <ChoiceList>⑤ {choiceList[4]}</ChoiceList><br/>
                     
                 </Box>
             </BoxWrapper>
