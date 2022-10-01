@@ -18,7 +18,7 @@ const BankResultPage = () => {
 
     const [questionList, setQuestionList] = useState(ExampleQuestionList);
     const [qType, setQType] = useState(0);
-    const [qNum, setQNum] = useState(0);
+    const [qNum, setQNum] = useState(0); 
 
     useEffect(()=> {
         setQType(location.state.qTypeValue);
@@ -30,6 +30,7 @@ const BankResultPage = () => {
                 //const response = await axios.get(`http://203.255.178.158:8080/question/${qTypeNum+1}`);
                 const response = ExampleQuestionList; // 통신 되면 지우는 코드
                 setQuestionList(response);
+                setQNum(ExampleQuestionList.length);
             } catch(error) {
                 console.log(error);
             }
@@ -38,6 +39,10 @@ const BankResultPage = () => {
         fetchData(qType, qNum);
     }, [location]);
 
+    
+  const LoadMore = () => {
+    setPostNum(prev => prev + 10);
+  }
     return (
         <>
         <Header/>
@@ -58,14 +63,28 @@ const BankResultPage = () => {
                 <GR>{bankQuestionTypeList[qType].label}</GR> 유형의 
                 문제 <GR>{qNum}</GR>개를 찾았어요!
         </Description>
-        <>
+            <>
             {
-                questionList.map((it) => ( //{id, title, type, paragraph, choiceList}
+                questionList.slice(0,postNum).map((it) => ( //{id, title, type, paragraph, choiceList}
                     <QuestionBox key={it.id} id={it.id} title={it.title} type={it.type} paragraph={it.paragraph} choiceList={it.choiceList}/>
                     )
                 )
             }
-        </></>
+            </>
+            <div className="load-more">
+            {
+              postNum<questionList.length ? (
+                <div>
+                  <p>{postNum}/{questionList.length}</p> 
+                  <p>{questionList.length - postNum}개의 문제가 더 남아있어요!</p>
+                  <button onClick={LoadMore}>10개 더 보기</button>
+                </div>
+              ):(
+                <h3>{questionList.length}개의 문제를 모두 풀었어요! 수고하셨습니다. </h3>
+              )
+            }
+          </div>
+            </>
         )
         }
         </BoxWrapper>
