@@ -31,7 +31,6 @@ const BankResultPage = () => {
                 //const response = await axios.get(`http://203.255.178.158:8080/question/${qTypeNum+1}`);
                 const response = ExampleQuestionList; // 통신 되면 지우는 코드
                 setQuestionList(response);
-                setQNum(ExampleQuestionList.length);
             } catch(error) {
                 console.log(error);
             }
@@ -59,30 +58,32 @@ const BankResultPage = () => {
             </div>
         ) : (
         <>
-        <Description>
+            <Description>
                 <GR>{bankQuestionTypeList[qType].label}</GR> 유형의 
                 문제 <GR>{qNum}</GR>개를 찾았어요!
-        </Description>
+            </Description>
             <>
             {
-                questionList.slice(0,postNum).map((it) => ( 
+                questionList.slice(0,qNum).slice(0,postNum).map((it) => ( 
                     // {questionID, passageID, question_type, question, new_passage, answer, d1,d2,d3,d4}
-                    <QuestionBox key={it.questionID} id={i++} title={it.question} type={it.question_type} 
-                     paragraph={it.new_passage} answer={it.answer} d1={it.d1} d2={it.d2} d3={it.d3} d4={it.d4} />
+                    <QuestionBox key={it.questionID} id={i++} 
+                        title={it.question} type={it.question_type} 
+                        paragraph={it.new_passage} answer={it.answer} 
+                        d1={it.d1} d2={it.d2} d3={it.d3} d4={it.d4} />
                     )
                 )
             }
             </>
             <div className="load-more">
             {
-              postNum<questionList.length ? (
+              postNum<qNum ? (
                 <div>
-                  <p>{postNum}/{questionList.length}</p> 
-                  <p>{questionList.length - postNum}개의 문제가 더 남아있어요!</p>
-                  <button onClick={LoadMore}>10개 더 보기</button>
+                  <p>{postNum}/{qNum}</p> 
+                  <p>{qNum - postNum}개의 문제가 더 남아있어요!</p>
+                  <button onClick={LoadMore}>더 보기</button>
                 </div>
               ):(
-                <h3>{questionList.length}개의 문제를 모두 풀었어요! 수고하셨습니다. </h3>
+                <h3>{qNum}개의 문제를 모두 풀었어요! 수고하셨습니다. </h3>
               )
             }
           </div>
