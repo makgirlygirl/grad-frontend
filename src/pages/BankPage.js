@@ -12,14 +12,14 @@ import axios from "axios";
 import { isElementOfType } from "react-dom/test-utils";
 
 const BankPage = () => {
-    //var qObject = new Object(); //다음 페이지로 값 전달하기 위한 변수
-    //let isComplete = false; // 모든 필드가 입력 되었는가?
-    const [isLoading, setIsLoading] = useState(false); //로딩중임을 표시하는 state
     const navigate = useNavigate();
+
+    const [isLoading, setIsLoading] = useState(false); //로딩중임을 표시하는 state
+    const [postNum, setPostNum] = useState(10); // 'Load More' 기능 구현을 위한 state
 
     const [qTypeNum, setQTypeNum] = useState(0);
     const [qTypeList, setQTypeList] = useState(bankQuestionTypeList);
-    const onClickType = (id) => {
+    const onClickQType = (id) => {
         // 선택된 것 빼고는 모두 unchecked 되도록
         
         setQTypeList(
@@ -62,7 +62,7 @@ const BankPage = () => {
         </CategoryWrapper>
         <div>
             <TextWrapper><img src={Step1_Question}/></TextWrapper>
-            <QuestionTypeList key="qTypeList" onClick={onClickType} qTypeList={qTypeList}/>
+            <QuestionTypeList key="qTypeList" onClick={onClickQType} qTypeList={qTypeList}/>
         </div>
         <TextWrapper><img src={Arrow}/></TextWrapper>
         <div>
