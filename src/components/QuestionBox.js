@@ -15,6 +15,8 @@ export const UpperBox = ({id, title, type}) => {
 // {questionID, passageID, question_type, question, new_passage, answer, d1,d2,d3,d4}
 const QuestionBox = ({id, title, type, paragraph, answer, d1,d2,d3,d4}) => {
     const questionTypeList = [u1, u2, u3, u4, u5, u6, u7, u8];
+
+    // 정답과 distractor를 랜덤하게 섞어주는 함수
     const shuffleArray = array => {
         for (let i = 0; i < array.length; i++) {
           let j = Math.floor(Math.random() * (i + 1));
