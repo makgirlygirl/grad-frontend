@@ -68,7 +68,6 @@ const UpperBoxStyle = styled.div`
     background: rgba(58, 166, 100, 0.4);
     border: 2px solid rgba(1, 129, 51, 0.78);
     border-radius: 5px;
-    float: left;
 `;
 const Title = styled.span`
 
