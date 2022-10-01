@@ -19,9 +19,9 @@ const BankResultPage = () => {
     useEffect(()=> {
         setQType(location.state.qTypeValue);
         setQNum(location.state.qNumValue);
-        
-        /* GET API 동기 방식으로 받아오면 useEffect로 setQuestionList 해주는 내용 추가하기 */
 
+        /* GET API 동기 방식으로 받아오면 useEffect로 setQuestionList 해주는 내용 추가하기 */
+        
     }, [location]);
 
     return (

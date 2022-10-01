@@ -8,34 +8,48 @@ import Step1_Question from "../assets/bank/bank_step1.svg";
 import Step2_Question from "../assets/bank/bank_step2.svg";
 import Arrow from '../assets/main/arrow.svg';
 import QuestionTypeList, { bankQuestionTypeList } from "../assets/bank/QuestionTypeList";
+import axios from "axios";
+import { isElementOfType } from "react-dom/test-utils";
 
 const BankPage = () => {
     //var qObject = new Object(); //다음 페이지로 값 전달하기 위한 변수
     //let isComplete = false; // 모든 필드가 입력 되었는가?
+    const [isLoading, setIsLoading] = useState(false); //로딩중임을 표시하는 state
     const navigate = useNavigate();
 
+    const [qTypeNum, setQTypeNum] = useState(0);
     const [qTypeList, setQTypeList] = useState(bankQuestionTypeList);
     const onClickType = (id) => {
         // 선택된 것 빼고는 모두 unchecked 되도록
         
         setQTypeList(
             qTypeList.map((it)=>
-            it.id === id ? { ...it, checked: false } : it,
+            it.id === id ? { ...it, checked: !it.checked } : it,
             ),
         );
+        setQTypeNum(id);
     };
     const [qNum, setQNum] = useState(0);
     const onChangeQNum = (e) => {
         setQNum(e.target.value);
     }
-    const submitInput = async(qTypeList, qNum) => {
+    const submitInput = async function(qTypeList, qNum) {
         if(qTypeList===bankQuestionTypeList || qNum===0){
             console.log("incomplete input");
             // 뒤로 넘기지 않고, alert 보내주기
         } else {
-            /// 타입리스트 중 true 인 것 찾아서 qType 변수에 저장 하는 코드 추가하기
-            const qType = 1; // 수정 필요!!
-            navigate("/bank/result", { state: { qTypeValue:qType, qNumValue:qNum } });
+            /*
+            setIsLoading(true);
+            /// 여기에 GET 해오는 내용 추가
+            axios.get(`http://203.255.178.158:8080/question/${qTypeNum+1}`)
+            .then(function(response){
+                console.log(response);
+                navigate("/bank/result", { state: { qTypeValue:qTypeNum, qNumValue:qNum, resultValue: response } });
+            }).catch(function(error){
+                console.log(error);
+            })
+            */
+            navigate("/bank/result", { state: { qTypeValue:qTypeNum, qNumValue:qNum } });
         }
 
     }
