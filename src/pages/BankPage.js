@@ -14,9 +14,6 @@ import { isElementOfType } from "react-dom/test-utils";
 const BankPage = () => {
     const navigate = useNavigate();
 
-    const [isLoading, setIsLoading] = useState(false); //로딩중임을 표시하는 state
-    const [postNum, setPostNum] = useState(10); // 'Load More' 기능 구현을 위한 state
-
     const [qTypeNum, setQTypeNum] = useState(0);
     const [qTypeList, setQTypeList] = useState(bankQuestionTypeList);
     const onClickQType = (id) => {
@@ -32,26 +29,6 @@ const BankPage = () => {
     const [qNum, setQNum] = useState(0);
     const onChangeQNum = (e) => {
         setQNum(e.target.value);
-    }
-    const submitInput = async function(qTypeList, qNum) {
-        if(qTypeList===bankQuestionTypeList || qNum===0){
-            console.log("incomplete input");
-            // 뒤로 넘기지 않고, alert 보내주기
-        } else {
-            /*
-            setIsLoading(true);
-            /// 여기에 GET 해오는 내용 추가
-            axios.get(`http://203.255.178.158:8080/question/${qTypeNum+1}`)
-            .then(function(response){
-                console.log(response);
-                navigate("/bank/result", { state: { qTypeValue:qTypeNum, qNumValue:qNum, resultValue: response } });
-            }).catch(function(error){
-                console.log(error);
-            })
-            */
-            navigate("/bank/result", { state: { qTypeValue:qTypeNum, qNumValue:qNum } });
-        }
-
     }
     return (
       <Wrapper>
@@ -79,8 +56,11 @@ const BankPage = () => {
         <TextWrapper><img src={Arrow}/></TextWrapper>
         <QuestionWrapper>
             <Button onClick={() => {
-                  submitInput(qTypeList, qNum);
-                }}>GO!</Button>
+                if(qTypeList===bankQuestionTypeList || qNum===0)
+                    console.log("incomplete input"); // 뒤로 넘기지 않고, alert 보내주기
+                else
+                    navigate("/bank/result", { state: { qTypeValue:qTypeNum, qNumValue:qNum } });
+            }}>GO!</Button>
         </QuestionWrapper>
       </Wrapper>
       

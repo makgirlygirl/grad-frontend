@@ -7,12 +7,16 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import QuestionBox from "../components/QuestionBox";
 import { ExampleQuestionList } from "../assets/bank/Example-QuestionList";
 import QuestionTypeList, { bankQuestionTypeList } from "../assets/bank/QuestionTypeList";
+import axios from "axios";
 
 const BankResultPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const [questionList, setQuestionList] = useState(ExampleQuestionList);
 
+    const [isLoading, setIsLoading] = useState(false); //로딩중임을 표시하는 state
+    const [postNum, setPostNum] = useState(10); // 'Load More' 기능 구현을 위한 state
+
+    const [questionList, setQuestionList] = useState(ExampleQuestionList);
     const [qType, setQType] = useState(0);
     const [qNum, setQNum] = useState(0);
 
@@ -20,8 +24,18 @@ const BankResultPage = () => {
         setQType(location.state.qTypeValue);
         setQNum(location.state.qNumValue);
 
-        /* GET API 동기 방식으로 받아오면 useEffect로 setQuestionList 해주는 내용 추가하기 */
-        
+        const fetchData = async(qType, qNum) => {
+            setIsLoading(true);
+            try {
+                //const response = await axios.get(`http://203.255.178.158:8080/question/${qTypeNum+1}`);
+                const response = ExampleQuestionList; // 통신 되면 지우는 코드
+                setQuestionList(response);
+            } catch(error) {
+                console.log(error);
+            }
+            setIsLoading(false);
+        }
+        fetchData(qType, qNum);
     }, [location]);
 
     return (
@@ -31,20 +45,28 @@ const BankResultPage = () => {
             <Link to='/bank'><img src={Bank_checked} alt="bank_checked"/></Link>
             <Link to='/creator'><img src={Creator} alt="creator_unchecked"/></Link>
         </CategoryWrapper>
-        <BoxWrapper>
-            <Description>
-                <GR>{bankQuestionTypeList[qType].label}</GR> 유형의 
-                문제 <GR>{qNum}</GR>개를 찾았어요!
-            </Description>
-            <>
-            {
-                questionList.map((it) => ( //{id, title, type, paragraph, choiceList}
-                    <QuestionBox key={it.id} id={it.id} title={it.title} type={it.type} paragraph={it.paragraph} choiceList={it.choiceList}/>
+        {
+            isLoading? (
+                <div className="loader">
+                    <span>Loading...</span>
+                </div>
+            ) : (
+            <BoxWrapper>
+                <Description>
+                    <GR>{bankQuestionTypeList[qType].label}</GR> 유형의 
+                    문제 <GR>{qNum}</GR>개를 찾았어요!
+                </Description>
+                <>
+                {
+                    questionList.map((it) => ( //{id, title, type, paragraph, choiceList}
+                        <QuestionBox key={it.id} id={it.id} title={it.title} type={it.type} paragraph={it.paragraph} choiceList={it.choiceList}/>
+                        )
                     )
-                )
-            }
-            </>
-        </BoxWrapper>
+                }
+                </>
+            </BoxWrapper>
+            )
+        }
         
         </>
       // {id, title, type, paragraph, choiceList}
