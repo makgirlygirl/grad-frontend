@@ -45,31 +45,31 @@ const BankResultPage = () => {
             <Link to='/bank'><img src={Bank_checked} alt="bank_checked"/></Link>
             <Link to='/creator'><img src={Creator} alt="creator_unchecked"/></Link>
         </CategoryWrapper>
-        {
-            isLoading? (
-                <div className="loader">
-                    <span>Loading...</span>
-                </div>
-            ) : (
-            <BoxWrapper>
-                <Description>
-                    <GR>{bankQuestionTypeList[qType].label}</GR> 유형의 
-                    문제 <GR>{qNum}</GR>개를 찾았어요!
-                </Description>
-                <>
-                {
-                    questionList.map((it) => ( //{id, title, type, paragraph, choiceList}
-                        <QuestionBox key={it.id} id={it.id} title={it.title} type={it.type} paragraph={it.paragraph} choiceList={it.choiceList}/>
-                        )
-                    )
-                }
-                </>
-            </BoxWrapper>
-            )
-        }
         
+        <BoxWrapper>
+        {
+        isLoading? (
+            <div className="loader">
+                <span>Loading...</span>
+            </div>
+        ) : (
+        <>
+        <Description>
+                <GR>{bankQuestionTypeList[qType].label}</GR> 유형의 
+                문제 <GR>{qNum}</GR>개를 찾았어요!
+        </Description>
+        <>
+            {
+                questionList.map((it) => ( //{id, title, type, paragraph, choiceList}
+                    <QuestionBox key={it.id} id={it.id} title={it.title} type={it.type} paragraph={it.paragraph} choiceList={it.choiceList}/>
+                    )
+                )
+            }
+        </></>
+        )
+        }
+        </BoxWrapper>
         </>
-      // {id, title, type, paragraph, choiceList}
     );
 };
 
