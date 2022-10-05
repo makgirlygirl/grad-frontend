@@ -66,7 +66,6 @@ const BoxWrapper = styled.div`
 const Box = styled.div`
     box-sizing: border-box;
     width: 100%;
-    min-height: 446px;
     border: 1px solid #999999;
     padding: 1.5rem;
     display: block;
@@ -75,8 +74,8 @@ const UpperBoxStyle = styled.div`
     box-sizing: border-box;
     display: block;
     width: 100%;
-    min-height: 10%;
-    padding: 0.5rem;
+    min-height: 20%;
+    padding:0.5rem;
     font-size: 1rem;
     font-weight: 900;
     color: black;
