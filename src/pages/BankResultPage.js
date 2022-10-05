@@ -23,8 +23,6 @@ const BankResultPage = () => {
 
     useEffect(()=> {
         setQType(location.state.qTypeValue);
-        //setQNum(location.state.qNumValue); //요청한 qNum보다 데이터가 더 적을 경우를 위해 아래 fetchData 에서 처리함
-
         const fetchData = async(qType, qNum) => {
             setIsLoading(true);
             try {
