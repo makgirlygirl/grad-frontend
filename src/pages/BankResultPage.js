@@ -28,9 +28,9 @@ const BankResultPage = () => {
         const fetchData = async(qType, qNum) => {
             setIsLoading(true);
             try {
-                const response = await axios.get(`http://localhost:9000/question/${qType+1}/`);
+                const response = await axios.get(`http://localhost:8080/question/${qType+1}/`);
                 //const response = ExampleQuestionList; // 통신 되면 지우는 코드
-                setQuestionList(response);
+                setQuestionList(response.data);
             } catch(error) {
                 console.log(error);
             }
