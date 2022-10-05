@@ -23,14 +23,15 @@ const BankResultPage = () => {
 
     useEffect(()=> {
         setQType(location.state.qTypeValue);
-        setQNum(location.state.qNumValue);
+        //setQNum(location.state.qNumValue); //요청한 qNum보다 데이터가 더 적을 경우를 위해 아래 fetchData 에서 처리함
 
         const fetchData = async(qType, qNum) => {
             setIsLoading(true);
             try {
                 const response = await axios.get(`http://localhost:8080/question/${qType+1}/`);
-                //const response = ExampleQuestionList; // 통신 되면 지우는 코드
                 setQuestionList(response.data);
+                // response.data는 DB에서 받아오는 문제의 개수 / location.state.qNumValue는 사용자가 요청한 문제 개수
+                response.data.length < location.state.qNumValue ? setQNum(response.data.length) : setQNum(location.state.qNumValue);
             } catch(error) {
                 console.log(error);
             }
