@@ -58,8 +58,10 @@ const BankPage = () => {
             <Button onClick={() => {
                 if(qTypeList===bankQuestionTypeList || qNum===0)
                     console.log("incomplete input"); // 뒤로 넘기지 않고, alert 보내주기
-                else
+                else {
+                    console.log(qTypeNum);
                     navigate("/bank/result", { state: { qTypeValue:qTypeNum, qNumValue:qNum } });
+                }
             }}>GO!</Button>
         </QuestionWrapper>
       </Wrapper>
