@@ -20,9 +20,9 @@ const MainPage = () => {
             <div className='main-content-text-right'>
               <h1>
                 영어 공부,<br/>
-                이제는 FIGMA와 함께 하세요.
+                이제 Soulmate와 함께 하세요.
               </h1><br/>
-              <h3>자기주도 영어 학습 플랫폼, FIGMA</h3>
+              <h3>자기주도 영어 학습 플랫폼, Soulmate</h3>
             </div>
             <img src={ExamplePhoto}/>
             </MainContent1>
@@ -30,12 +30,12 @@ const MainPage = () => {
             <img src={ExamplePhoto}/>
             <div className='main-content-text-left'>
               <h2>
-              FIGMA AI가 제작한<br/>
+              Soulmate AI가 제작한<br/>
               1,600+개의 <br/>
               수능 기출 변형 문제 은행
               </h2><br/>
               <Link to="/bank">
-                <h5 className="green-font">FIGMA 문제 은행 바로 가기 →</h5>
+                <h5 className="green-font">Soulmate 문제 은행 바로 가기 →</h5>
             </Link>
             </div>
           </MainContent2>
