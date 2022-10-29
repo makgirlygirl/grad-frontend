@@ -15,6 +15,9 @@ const CreatorPage = () => {
             <Link to='/bank'><img src={Bank} alt="bank_unchecked"/></Link>
             <Link to='/creator'><img src={Creator_checked} alt="creator_checked"/></Link>
         </CategoryWrapper>
+        <>
+        
+        </>
       </Wrapper>
     );
 }
