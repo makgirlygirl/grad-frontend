@@ -32,7 +32,7 @@ const QuestionBox = ({id, title, type, paragraph, answer, d1,d2,d3,d4}) => {
     return (
         <Wrapper>
             <BoxWrapper>
-                <UpperBox id={id} title={title} type={questionTypeList[type]}/>
+                <UpperBox id={id} title={title} type={questionTypeList[type-1]}/>
                 <Box>
                     <Paragraph>{paragraph}</Paragraph>
                     <ChoiceList>① {choiceList[0]}</ChoiceList><br/>

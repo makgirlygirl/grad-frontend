@@ -20,8 +20,8 @@ const QuestionTypeButton = ({id, onClick}) => {
     <>
     {
         isChecked ?
-        <TypeButton onClick={handleChecked} src={checkedButtonList[id]} alt="type_checked"/> : 
-        <TypeButton onClick={handleChecked} src={uncheckedButtonList[id]} alt="type_unchecked"/>
+        <TypeButton onClick={handleChecked} src={checkedButtonList[id-1]} alt="type_checked"/> : 
+        <TypeButton onClick={handleChecked} src={uncheckedButtonList[id-1]} alt="type_unchecked"/>
     }
     </>
 )};

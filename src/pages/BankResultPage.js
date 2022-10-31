@@ -22,11 +22,12 @@ const BankResultPage = () => {
     let i=0; //문제 번호
 
     useEffect(()=> {
-        setQType(location.state.qTypeValue);
         const fetchData = async(qType, qNum) => {
+
+            setQType(location.state.qTypeValue-1);
             setIsLoading(true);
             try {
-                const response = await axios.get(`http://localhost:8080/question/${qType+1}/`);
+                const response = await axios.get(`http://localhost:9000/question/${location.state.qTypeValue}/`);
                 setQuestionList(response.data);
                 // response.data는 DB에서 받아오는 문제의 개수 / location.state.qNumValue는 사용자가 요청한 문제 개수
                 response.data.length < location.state.qNumValue ? setQNum(response.data.length) : setQNum(location.state.qNumValue);
@@ -36,6 +37,7 @@ const BankResultPage = () => {
             setIsLoading(false);
         }
         fetchData(qType, qNum);
+        //console.log(qType);
     }, [location]);
 
     const LoadMore = () => {
