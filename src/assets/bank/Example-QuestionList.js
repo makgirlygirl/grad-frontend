@@ -3,7 +3,7 @@
 // 나중에 이걸 프론트 단에서 랜덤으로 섞는다
 
 export const ExampleQuestionList = [
-    {questionID:1, passageID:1, question_type: 0, 
+    {questionID:1, passageID:1, question_type: 1, 
         question:"다음 글의 목적으로 가장 적절한 것은?", 
         new_passage:`Philip Kitcher and Wesley Salmon have suggested that there are two possible alternatives among philosophical theories of explanation.
         One is the view that scientific explanation consists in the unification of broad bodies of phenomena under a minimal number of generalizations.
@@ -18,7 +18,7 @@ export const ExampleQuestionList = [
         d3:`The scientific interpretation organization and the systematic understanding of our understanding of the world; the more economical the economy, the deeper our understanding of natural content.`,
         d4:`In other words, the conclusion of science comes from a very small study.`,
     },
-    {questionID:2, passageID:1, question_type: 7, 
+    {questionID:2, passageID:1, question_type: 8, 
         question:"아래의 B는 다음 A의 지문을 요약한 문단이다. 요약문의 빈칸에 들어갈 어휘를 고르시오.",
         new_passage:`Philip Kitcher and Wesley Salmon have suggested that there are two possible alternatives among philosophical theories of explanation.
         One is the view that scientific explanation consists in the unification of broad bodies of phenomena under a minimal number of generalizations.
