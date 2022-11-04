@@ -51,7 +51,7 @@ const CreatorPage = () => {
                 if(qTypeList===bankQuestionTypeList)
                     console.log("incomplete input"); // 뒤로 넘기지 않고, alert 보내주기
                 else {
-                  console.log("good");
+                  navigate("/creator/result", { state: { qTypeValue:qTypeNum } });
                 }
             }}>GO!</Button>
         </QuestionWrapper>
