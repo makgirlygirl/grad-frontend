@@ -27,8 +27,9 @@ const CreatorResultPage = () => {
             setQType(location.state.qTypeValue-1);
             setIsLoading(true);
             try {
-                const response = await axios.get(`http://localhost:9000/question/${location.state.qTypeValue}/`);
-                setQuestionList(response.data);
+                // 여기를 지문 POST 하는 API 받아서 넣어야함
+                //const response = await axios.get(`http://localhost:9000/question/${location.state.qTypeValue}/`);
+                //setQuestionList(response.data);
             } catch(error) {
                 console.log(error);
             }
