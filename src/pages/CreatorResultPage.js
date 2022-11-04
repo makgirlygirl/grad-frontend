@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import Header from "../components/Header";
-import Creator from "../assets/category/creator_unchecked.svg";
-import Bank_checked from '../assets/category/bank_checked.svg';
+import Creator_checked from "../assets/category/creator_checked.svg";
+import Bank from '../assets/category/bank_unchecked.svg';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import QuestionBox from "../components/QuestionBox";
 import { ExampleQuestionList } from "../assets/bank/Example-QuestionList";
 import QuestionTypeList, { bankQuestionTypeList } from "../assets/bank/QuestionTypeList";
 import axios from "axios";
 
-const BankResultPage = () => {
+const CreatorResultPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -27,13 +27,11 @@ const BankResultPage = () => {
             setQType(location.state.qTypeValue-1);
             setIsLoading(true);
             try {
-                const response = await axios.get(`http://localhost:9000/question/${location.state.qTypeValue}/`);
-                setQuestionList(response.data);
-                // response.data는 DB에서 받아오는 문제의 개수 / location.state.qNumValue는 사용자가 요청한 문제 개수
-                response.data.length < location.state.qNumValue ? setQNum(response.data.length) : setQNum(location.state.qNumValue);
+                // 여기를 지문 POST 하는 API 받아서 넣어야함
+                //const response = await axios.get(`http://localhost:9000/question/${location.state.qTypeValue}/`);
+                //setQuestionList(response.data);
             } catch(error) {
                 console.log(error);
-                setQNum(5); // 통신 오류로 문제 못 가져올 경우, 샘플 문제 보여줌
             }
             setIsLoading(false);
         }
@@ -48,8 +46,8 @@ const BankResultPage = () => {
         <>
         <Header/>
         <CategoryWrapper>
-            <Link to='/bank'><img src={Bank_checked} alt="bank_checked"/></Link>
-            <Link to='/creator'><img src={Creator} alt="creator_unchecked"/></Link>
+            <Link to='/bank'><img src={Bank} alt="bank_unchecked"/></Link>
+            <Link to='/creator'><img src={Creator_checked} alt="creator_checked"/></Link>
         </CategoryWrapper>
         
         <BoxWrapper>
@@ -61,8 +59,8 @@ const BankResultPage = () => {
         ) : (
         <>
             <Description>
-                <GR>{bankQuestionTypeList[qType].label}</GR> 유형의 
-                문제 <GR>{qNum}</GR>개를 찾았어요!
+                새로운 지문으로부터 
+                문제 <GR>{qNum}</GR>개를 생성했어요!
             </Description>
             <>
             {
@@ -118,4 +116,4 @@ const CategoryWrapper = styled.div`
   justify-content : center;
   padding: 2rem;
 `;
-export default BankResultPage;
+export default CreatorResultPage;
