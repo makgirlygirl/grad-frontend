@@ -6,36 +6,21 @@ import Bank from '../assets/category/bank_unchecked.svg';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import QuestionBox from "../components/QuestionBox";
 import { ExampleQuestionList } from "../assets/bank/Example-QuestionList";
-import QuestionTypeList, { bankQuestionTypeList } from "../assets/bank/QuestionTypeList";
 import axios from "axios";
 
 const CreatorResultPage = () => {
     const location = useLocation();
-    const navigate = useNavigate();
 
     const [isLoading, setIsLoading] = useState(false); //로딩중임을 표시하는 state
     const [postNum, setPostNum] = useState(10); // 'Load More' 기능 구현을 위한 state
-
+    const [passageID, setPassageID] = useState(0); 
     const [questionList, setQuestionList] = useState(ExampleQuestionList);
-    const [qType, setQType] = useState(0);
-    const [qNum, setQNum] = useState(0); 
+    const [qNum, setQNum] = useState(0);
     let i=0; //문제 번호
 
     useEffect(()=> {
-        const fetchData = async(qType, qNum) => {
-
-            setQType(location.state.qTypeValue-1);
-            setIsLoading(true);
-            try {
-                // 여기를 지문 POST 하는 API 받아서 넣어야함
-                //const response = await axios.get(`http://localhost:9000/question/${location.state.qTypeValue}/`);
-                //setQuestionList(response.data);
-            } catch(error) {
-                console.log(error);
-            }
-            setIsLoading(false);
-        }
-        fetchData(qType, qNum);
+        console.log(location.state.passageValue.passage);
+        setPassageID(location.state.passageValue.passageID);
         //console.log(qType);
     }, [location]);
 

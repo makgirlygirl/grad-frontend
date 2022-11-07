@@ -2,32 +2,27 @@ import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import Header from "../components/Header";
 import Bank from "../assets/category/bank_unchecked.svg";
-import Creator from "../assets/category/creator_unchecked.svg";
-import { Link, useNavigate } from "react-router-dom";
-import Bank_checked from '../assets/category/bank_checked.svg';
 import Creator_checked from "../assets/category/creator_checked.svg";
-import QuestionTypeList, { bankQuestionTypeList } from "../assets/bank/QuestionTypeList";
-import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 import Arrow from '../assets/main/arrow.svg';
 import Step1_Question from "../assets/creator/creator_step1.svg";
-import Step2_Question from "../assets/creator/creator_step2.svg";
+import axios from "axios";
 
 const CreatorPage = () => {
   const navigate = useNavigate();
 
-  const [qTypeNum, setQTypeNum] = useState(0);
-  const [qTypeList, setQTypeList] = useState(bankQuestionTypeList);
-  const onClickQType = (id) => {
-        // 선택된 것 빼고는 모두 unchecked 되도록
-        
-        setQTypeList(
-            qTypeList.map((it)=>
-            it.id === id ? { ...it, checked: !it.checked } : it,
-            ),
-        );
-        setQTypeNum(id);
-    };
-    return (
+  const [passage, setPassage] = useState("");
+  const onChangePassage = (e) => {
+    setPassage(e.target.value);
+  }
+  const postPassage = (passage) => {
+    axios.post(`http://localhost:9000/new_passage/`, { "passage" : passage })
+      .then(response => {
+        console.log(response.data);
+        navigate("/creator/result", { state: { passageValue : response.data } });
+      });
+  }
+  return (
       <Wrapper>
         <Header/>
         <CategoryWrapper>
@@ -37,22 +32,17 @@ const CreatorPage = () => {
         <div>
           <TextWrapper><img src={Step1_Question}/></TextWrapper>
           <TypeWrapper>
-            <InputBox/>
+            <InputBox
+              key="passage"
+              value={passage}
+              onChange={onChangePassage}
+            />
           </TypeWrapper>
-        </div>
-        <TextWrapper><img src={Arrow}/></TextWrapper>
-        <div>
-            <TextWrapper><img src={Step2_Question}/></TextWrapper>
-            <QuestionTypeList key="qTypeList" onClick={onClickQType} qTypeList={qTypeList}/>
         </div>
         <TextWrapper><img src={Arrow}/></TextWrapper>
         <QuestionWrapper>
             <Button onClick={() => {
-                if(qTypeList===bankQuestionTypeList)
-                    console.log("incomplete input"); // 뒤로 넘기지 않고, alert 보내주기
-                else {
-                  navigate("/creator/result", { state: { qTypeValue:qTypeNum } });
-                }
+                postPassage(passage);
             }}>GO!</Button>
         </QuestionWrapper>
       </Wrapper>
