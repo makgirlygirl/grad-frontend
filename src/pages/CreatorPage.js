@@ -2,12 +2,8 @@ import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import Header from "../components/Header";
 import Bank from "../assets/category/bank_unchecked.svg";
-import Creator from "../assets/category/creator_unchecked.svg";
-import { Link, useNavigate } from "react-router-dom";
-import Bank_checked from '../assets/category/bank_checked.svg';
 import Creator_checked from "../assets/category/creator_checked.svg";
-import { bankQuestionTypeList } from "../assets/bank/QuestionTypeList";
-import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 import Arrow from '../assets/main/arrow.svg';
 import Step1_Question from "../assets/creator/creator_step1.svg";
 
