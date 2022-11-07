@@ -15,26 +15,12 @@ const CreatorResultPage = () => {
     const [postNum, setPostNum] = useState(10); // 'Load More' 기능 구현을 위한 state
     const [passageID, setPassageID] = useState(0); 
     const [questionList, setQuestionList] = useState(ExampleQuestionList);
-    const [qNum, setQNum] = useState(0); 
+    const [qNum, setQNum] = useState(0);
     let i=0; //문제 번호
 
     useEffect(()=> {
-        const fetchData = async(qNum) => {
-            console.log(location.state.passageValue);
-            setIsLoading(true);
-            try {
-                const response = await axios.post(`http://localhost:9000/new_passage/`, {"passage":location.state.passageValue})
-                .then(response => {
-                    console.log(response);
-                });
-                //setPassageID(response.data);
-                //setQuestionList(response.data.questionList); // ?
-            } catch(error) {
-                console.log(error);
-            }
-            setIsLoading(false);
-        }
-        fetchData(qNum);
+        console.log(location.state.passageValue.passage);
+        setPassageID(location.state.passageValue.passageID);
         //console.log(qType);
     }, [location]);
 

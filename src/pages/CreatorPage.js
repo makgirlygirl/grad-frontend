@@ -6,13 +6,21 @@ import Creator_checked from "../assets/category/creator_checked.svg";
 import { Link, useNavigate } from "react-router-dom";
 import Arrow from '../assets/main/arrow.svg';
 import Step1_Question from "../assets/creator/creator_step1.svg";
+import axios from "axios";
 
 const CreatorPage = () => {
   const navigate = useNavigate();
-  
+
   const [passage, setPassage] = useState("");
   const onChangePassage = (e) => {
     setPassage(e.target.value);
+  }
+  const postPassage = (passage) => {
+    axios.post(`http://localhost:9000/new_passage/`, { "passage" : passage })
+      .then(response => {
+        console.log(response.data);
+        navigate("/creator/result", { state: { passageValue : response.data } });
+      });
   }
   return (
       <Wrapper>
@@ -34,7 +42,7 @@ const CreatorPage = () => {
         <TextWrapper><img src={Arrow}/></TextWrapper>
         <QuestionWrapper>
             <Button onClick={() => {
-                navigate("/creator/result", { state: { passageValue:passage } });
+                postPassage(passage);
             }}>GO!</Button>
         </QuestionWrapper>
       </Wrapper>
