@@ -10,7 +10,6 @@ import axios from "axios";
 
 const CreatorResultPage = () => {
     const location = useLocation();
-    const navigate = useNavigate();
 
     const [isLoading, setIsLoading] = useState(false); //로딩중임을 표시하는 state
     const [postNum, setPostNum] = useState(10); // 'Load More' 기능 구현을 위한 state
@@ -22,12 +21,13 @@ const CreatorResultPage = () => {
     useEffect(()=> {
         const fetchData = async(qNum) => {
             console.log(location.state.passageValue);
-            
             setIsLoading(true);
             try {
-                // 여기를 지문 POST 하는 API 받아서 넣어야함
-                //const response = await axios.post(`http://localhost:9000/new_passage/`);
-                //setPassageID(response.data.passageID);
+                const response = await axios.post(`http://localhost:9000/new_passage/`, {"passage":location.state.passageValue})
+                .then(response => {
+                    console.log(response);
+                });
+                //setPassageID(response.data);
                 //setQuestionList(response.data.questionList); // ?
             } catch(error) {
                 console.log(error);

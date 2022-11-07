@@ -9,6 +9,7 @@ import Step1_Question from "../assets/creator/creator_step1.svg";
 
 const CreatorPage = () => {
   const navigate = useNavigate();
+  
   const [passage, setPassage] = useState("");
   const onChangePassage = (e) => {
     setPassage(e.target.value);
