@@ -7,7 +7,6 @@ export const UpperBox = ({id, title, type}) => {
     return (
         <UpperBoxStyle>
             <Title>#{id+1} {title}</Title>
-            <Type src={type}/>
         </UpperBoxStyle>
     ); 
 };
@@ -30,7 +29,6 @@ const QuestionBox = ({id, title, type, paragraph, answer, d1,d2,d3,d4}) => {
     let choiceList = [answer, d1,d2,d3,d4];
     shuffleArray(choiceList);
     return (
-        <Wrapper>
             <BoxWrapper>
                 <UpperBox id={id} title={title} type={questionTypeList[type-1]}/>
                 <Box>
@@ -43,22 +41,17 @@ const QuestionBox = ({id, title, type, paragraph, answer, d1,d2,d3,d4}) => {
                     
                 </Box>
             </BoxWrapper>
-        </Wrapper>
     );
 }
 export default QuestionBox;
 
-const Wrapper = styled.div`
-  justify-content : center;
-  padding: 4rem;    
-  padding-bottom: 1rem;
-  display: flex;
-`;
 const BoxWrapper = styled.div`
+
+    box-sizing: border-box;
     display: block;
     justify-content : center;
     width: 80%;
-    
+    padding: 2rem;
     @media(max-width: 1880px){
         width: 95%;
     }
@@ -74,8 +67,7 @@ const UpperBoxStyle = styled.div`
     box-sizing: border-box;
     display: block;
     width: 100%;
-    min-height: 20%;
-    padding:0.5rem;
+    padding: 1rem;
     font-size: 1rem;
     font-weight: 900;
     color: black;
@@ -103,4 +95,13 @@ const ChoiceListNum = styled.img`
 `;
 const BtnShowAnswer = styled.button`
 
+`;
+const QBoxInnerWrapper = styled.div`
+    display: block;
+    justify-content : center;
+    width: 50%;
+
+    @media(max-width: 1880px){
+        width: 95%;
+    }
 `;

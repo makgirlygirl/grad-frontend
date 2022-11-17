@@ -45,6 +45,14 @@ const BankResultPage = () => {
     const LoadMore = () => {
         setPostNum(prev => prev + 10);
     }
+    const generatePDF = async(qType) => {
+        try{
+            const response = await axios.get(`http://localhost:9000/get_docx/${qType}/`);
+            console.log(response);
+        } catch(error){
+            console.log(error);
+        }
+    }
     return (
         <>
         <Header/>
@@ -68,21 +76,23 @@ const BankResultPage = () => {
             <PDFButton>
                 <Button 
                     label="PDF로 보기"
-                    //onClick={}
+                    onClick={generatePDF(qType)}
                 />
             </PDFButton>
-            <>
-            {
+            <QBoxOuterWrapper>
+                <QBoxInnerWrapper>
+                {
                 questionList.slice(0,qNum).slice(0,postNum).map((it) => ( 
                     // {questionID, passageID, question_type, question, new_passage, answer, d1,d2,d3,d4}
                     <QuestionBox key={it.questionID} id={i++} 
                         title={it.question} type={it.question_type} 
                         paragraph={it.new_passage} answer={it.answer} 
                         d1={it.d1} d2={it.d2} d3={it.d3} d4={it.d4} />
+                        )
                     )
-                )
-            }
-            </>
+                }
+                </QBoxInnerWrapper>
+            </QBoxOuterWrapper>
             <div className="load-more">
             {
               postNum<qNum ? (
@@ -130,5 +140,19 @@ const CategoryWrapper = styled.div`
   display: flex;
   justify-content : center;
   padding: 2rem;
+`;
+const QBoxOuterWrapper = styled.div`
+  justify-content : center;
+  padding: 2rem 4rem 2rem 4rem;    
+  display: flex;
+`;
+const QBoxInnerWrapper = styled.div`
+    display: block;
+    justify-content : center;
+    width: 100%;
+
+    @media(max-width: 1880px){
+        width: 100%;
+    }
 `;
 export default BankResultPage;
