@@ -84,10 +84,10 @@ const BankResultPage = () => {
                 {
                 questionList.slice(0,qNum).slice(0,postNum).map((it) => ( 
                     // {questionID, passageID, question_type, question, new_passage, answer, d1,d2,d3,d4}
-                    <QuestionBox key={it.questionID} id={i++} 
-                        title={it.question} type={it.question_type} 
+                    <QuestionBox key={it.passageID} id={i++} 
+                        title={it.question} 
                         paragraph={it.new_passage} answer={it.answer} 
-                        d1={it.d1} d2={it.d2} d3={it.d3} d4={it.d4} />
+                        e1={it.e1} e2={it.e2} e3={it.e3} e4={it.e4} e5={it.e5} />
                         )
                     )
                 }
