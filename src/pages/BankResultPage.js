@@ -8,6 +8,7 @@ import QuestionBox from "../components/QuestionBox";
 import { ExampleQuestionList } from "../assets/bank/Example-QuestionList";
 import QuestionTypeList, { bankQuestionTypeList } from "../assets/bank/QuestionTypeList";
 import axios from "axios";
+import Button from "../components/Button";
 
 const BankResultPage = () => {
     const location = useLocation();
@@ -64,6 +65,12 @@ const BankResultPage = () => {
                 <GR>{bankQuestionTypeList[qType].label}</GR> 유형의 
                 문제 <GR>{qNum}</GR>개를 찾았어요!
             </Description>
+            <PDFButton>
+                <Button 
+                    label="PDF로 보기"
+                    //onClick={}
+                />
+            </PDFButton>
             <>
             {
                 questionList.slice(0,qNum).slice(0,postNum).map((it) => ( 
@@ -111,6 +118,12 @@ const Description = styled.span`
 `;
 const GR = styled.span`
     color: green;
+`;
+const PDFButton = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content : right;
+    padding-right: 2rem;
 `;
 const CategoryWrapper = styled.div`
   width: 100%;

@@ -28,6 +28,9 @@ a {
 .green-font {
   color: #018133;
 }
+.load-more {
+  padding: 2rem;
+}
 
 /* ================== MEDIA QUERY ================== */
 @media (prefers-color-scheme: dark) {
