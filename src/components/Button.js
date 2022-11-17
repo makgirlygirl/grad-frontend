@@ -10,6 +10,7 @@ const Button = ({label, onClick}) => {
   box-sizing: border-box;
   padding: 0.8rem;
   font-size: 0.8rem;
+  background-color: white;
   border: 3px solid rgba(58, 166, 100, 0.64);
   border-radius: 4px;
   `

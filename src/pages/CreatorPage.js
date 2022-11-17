@@ -91,7 +91,6 @@ const Button = styled.button`
       }
 `;
 const InputBox = styled.textarea`
-  
   box-sizing: border-box;
   width: 40%;
   min-height: 450px;
@@ -99,7 +98,7 @@ const InputBox = styled.textarea`
   resize: none;
   font-size: 1rem;
   background: rgba(1, 129, 51, 0.13);
-  border: 8px solid rgba(58, 166, 100, 0.64);
+  border: 6px solid rgba(58, 166, 100, 0.64);
   border-radius: 4px;
 `;
 export default CreatorPage;
