@@ -34,7 +34,7 @@ const BankResultPage = () => {
                 response.data.length < location.state.qNumValue ? setQNum(response.data.length) : setQNum(location.state.qNumValue);
             } catch(error) {
                 console.log(error);
-                setQNum(5); // 통신 오류로 문제 못 가져올 경우, 샘플 문제 보여줌
+                setQNum(20); // 통신 오류로 문제 못 가져올 경우, 샘플 문제 보여줌
             }
             setIsLoading(false);
         }
