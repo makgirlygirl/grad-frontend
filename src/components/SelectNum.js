@@ -10,9 +10,9 @@ const SelectNum = ({num, onClick}) => {
 const CircleBtn = styled.button`
     display: block;
     font-size: 1rem;
-    width: 1.8rem;
+    width: 30px;
+    height: 30px;
     border-radius: 1rem;
-    padding: .2rem  .2rem;
     line-height: 1rem;
     border: .15rem solid green;
     margin: 0 .5rem 0 .5rem;

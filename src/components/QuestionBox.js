@@ -40,7 +40,7 @@ const QuestionBox = ({id, title, paragraph, answer, e1,e2,e3,e4,e5}) => {
     return (
             <BoxWrapper>
                 <UpperBox>
-                    <Title>#{id+1} {title}</Title>
+                    <div>#{id+1} {title}</div>
                 </UpperBox>
                 <Box>
                     <Paragraph>{paragraph}</Paragraph>
@@ -76,7 +76,6 @@ const QuestionBox = ({id, title, paragraph, answer, e1,e2,e3,e4,e5}) => {
 export default QuestionBox;
 
 const BoxWrapper = styled.div`
-
     box-sizing: border-box;
     display: block;
     justify-content : center;
@@ -92,6 +91,7 @@ const Box = styled.div`
     border: 1px solid #999999;
     padding: 1.5rem;
     display: block;
+    width: 100%;
 `;
 const UpperBox = styled.div`
     box-sizing: border-box;
@@ -104,26 +104,17 @@ const UpperBox = styled.div`
     border: 2px solid rgba(1, 129, 51, 0.78);
     border-radius: 5px;
 `;
-const Title = styled.span`
-
-`;
-const Type = styled.img`
-    float: right;
-    width: 8rem;
-`;
 const Paragraph = styled.div`
-
-    border: 1px solid #999999;  
+    border: 2px solid #999999;  
     padding: 1rem;
 `;
 const ChoiceList = styled.div`
     padding-top: .5rem;
-    
-`; //display:flex;
+    display:flex;
+`; //
 const UnderBox = styled.div`
-    float: right;
-    padding-right: 5rem;
-    padding-bottom: 5rem;
     box-sizing: border-box;
+    padding-right: 5rem;
+    padding: 2rem;
 
 `;
