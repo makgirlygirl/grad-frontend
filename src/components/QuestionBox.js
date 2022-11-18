@@ -16,12 +16,16 @@ const QuestionBox = ({id, title, paragraph, answer, e1,e2,e3,e4,e5}) => {
     const onClickToggle = (e) => {
         setToggleStatus(prevStatus => prevStatus ? false : true);
     }
-    const ToggleMenu = ({selected, answer}) => (
+    const submitAnswer = ({selected, answer}) => {
+        if(selected==answer) return <ToggleMenu isCorrect={true} selected={selected} answer={answer}/>;
+        else return <ToggleMenu isCorrect={false} selected={selected} answer={answer}/>;
+    };
+    const ToggleMenu = ({isCorrect, selected, answer}) => (
         <div className="pt-4 pb-8">
         <div className="flex flex-col w-full mx-auto px-4">
             <div className="flex flex-col space-y-2 text-gray-500">
                 <Box>
-                    {{selected}==={answer} ? 
+                    {isCorrect ? 
                         <div>정답이에요!</div> : 
                         <div>정답이 아니에요. 정답은 {answer}번이에요.</div>
                     }
@@ -63,7 +67,7 @@ const QuestionBox = ({id, title, paragraph, answer, e1,e2,e3,e4,e5}) => {
                     <UnderBox>
                         <Button label={"제출"} onClick={() => {onClickToggle()}}/>
                         {toggleStatus ? 
-                            <ToggleMenu answer={answer} selected={selected}/> : null}
+                            submitAnswer({selected, answer}) : null}
                     </UnderBox>
                 </Box>
             </BoxWrapper>
