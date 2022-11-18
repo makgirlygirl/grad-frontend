@@ -9,6 +9,9 @@ import SelectNum from "./SelectNum";
 const QuestionBox = ({id, title, paragraph, answer, e1,e2,e3,e4,e5}) => {
     const questionTypeList = [u1, u2, u3, u4, u5, u6, u7, u8];
     const [selected, setSelected] = useState(0);
+    const submitAnswer = () => {
+        console.log(selected);
+    }
     return (
             <BoxWrapper>
                 <UpperBox>
@@ -17,28 +20,31 @@ const QuestionBox = ({id, title, paragraph, answer, e1,e2,e3,e4,e5}) => {
                 <Box>
                     <Paragraph>{paragraph}</Paragraph>
                     <ChoiceList>
-                        <SelectNum num={1}/>
+                        <SelectNum num={1} onClick={()=>{setSelected(1)}}/>
                         <span>{e1}</span>
                     </ChoiceList>
                     <ChoiceList>
-                        <SelectNum num={2}/>{e2}
+                        <SelectNum num={2} onClick={()=>{setSelected(2)}}/>
+                        <span>{e2}</span>
                     </ChoiceList>
                     <ChoiceList>
-                        <SelectNum num={3}/>{e3}
+                        <SelectNum num={3} onClick={()=>{setSelected(3)}}/>
+                        <span>{e3}</span>
                     </ChoiceList>
                     <ChoiceList>
-                        <SelectNum num={4}/>{e4}
+                        <SelectNum num={4} onClick={()=>{setSelected(4)}}/>
+                        <span>{e4}</span>
                     </ChoiceList>
                     <ChoiceList>
-                        <SelectNum num={5}/>
+                        <SelectNum num={5} onClick={()=>{setSelected(5)}}/>
                         <span>{e5}</span>
                     </ChoiceList>
                     <UnderBox>
-                        <Button label={"제출"}/>
+                        <Button label={"제출"} onClick={() => {submitAnswer()}}/>
                     </UnderBox>
                 </Box>
             </BoxWrapper>
-    );
+    ); 
 }
 export default QuestionBox;
 
@@ -85,8 +91,8 @@ const Paragraph = styled.div`
 `;
 const ChoiceList = styled.div`
     padding-top: .5rem;
-    display:flex;
-`;
+    
+`; //display:flex;
 const UnderBox = styled.div`
     float: right;
     padding-right: 5rem;
