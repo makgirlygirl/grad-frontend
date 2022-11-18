@@ -5,13 +5,14 @@ const Button = ({label, onClick}) => {
       <CustomBtn onClick={onClick}>{label}</CustomBtn>
     ); // 
   };
-  const CustomBtn = styled.button`
-  
+export default Button;
+
+const CustomBtn = styled.button`
   box-sizing: border-box;
   padding: 0.8rem;
   font-size: 0.8rem;
   background-color: white;
   border: 3px solid rgba(58, 166, 100, 0.64);
   border-radius: 4px;
-  `
-export default Button;
+  min-width: 190px;
+`; // min-width: 15%;
