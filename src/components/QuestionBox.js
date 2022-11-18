@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
+import Button from "./Button";
 import {u1, u2, u3, u4, u5, u6, u7, u8} from "./FileIndex";
+import SelectNum from "./SelectNum";
 
 // {passageID, question_type, question, new_passage, answer, e1,e2,e3,e4,e5}
 const QuestionBox = ({id, title, paragraph, answer, e1,e2,e3,e4,e5}) => {
     const questionTypeList = [u1, u2, u3, u4, u5, u6, u7, u8];
+    const [selected, setSelected] = useState(0);
     return (
             <BoxWrapper>
                 <UpperBox>
@@ -13,12 +16,26 @@ const QuestionBox = ({id, title, paragraph, answer, e1,e2,e3,e4,e5}) => {
                 </UpperBox>
                 <Box>
                     <Paragraph>{paragraph}</Paragraph>
-                    <ChoiceList>① {e1}</ChoiceList><br/>
-                    <ChoiceList>② {e2}</ChoiceList><br/>
-                    <ChoiceList>③ {e3}</ChoiceList><br/>
-                    <ChoiceList>④ {e4}</ChoiceList><br/>
-                    <ChoiceList>⑤ {e5}</ChoiceList><br/>
-                    
+                    <ChoiceList>
+                        <SelectNum num={1}/>
+                        <span>{e1}</span>
+                    </ChoiceList>
+                    <ChoiceList>
+                        <SelectNum num={2}/>{e2}
+                    </ChoiceList>
+                    <ChoiceList>
+                        <SelectNum num={3}/>{e3}
+                    </ChoiceList>
+                    <ChoiceList>
+                        <SelectNum num={4}/>{e4}
+                    </ChoiceList>
+                    <ChoiceList>
+                        <SelectNum num={5}/>
+                        <span>{e5}</span>
+                    </ChoiceList>
+                    <UnderBox>
+                        <Button label={"제출"}/>
+                    </UnderBox>
                 </Box>
             </BoxWrapper>
     );
@@ -66,21 +83,14 @@ const Paragraph = styled.div`
     border: 1px solid #999999;  
     padding: 1rem;
 `;
-const ChoiceList = styled.span`
-    padding: 1rem;
+const ChoiceList = styled.div`
+    padding-top: .5rem;
+    display:flex;
 `;
-const ChoiceListNum = styled.img`
+const UnderBox = styled.div`
+    float: right;
+    padding-right: 5rem;
+    padding-bottom: 5rem;
+    box-sizing: border-box;
 
-`;
-const BtnShowAnswer = styled.button`
-
-`;
-const QBoxInnerWrapper = styled.div`
-    display: block;
-    justify-content : center;
-    width: 50%;
-
-    @media(max-width: 1880px){
-        width: 95%;
-    }
 `;
