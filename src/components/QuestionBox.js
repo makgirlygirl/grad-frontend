@@ -29,7 +29,7 @@ const QuestionBox = ({id, title, paragraph, answer, e1,e2,e3,e4,e5}) => {
                         <div>정답이에요!</div> : 
                         <div>정답이 아니에요. 정답은 {answer}번이에요.</div>
                     }
-                    
+                    <br/>
                     선택한 답: {selected}<br/>
                     정답: {answer}<br/>
                 </Box>
@@ -65,7 +65,7 @@ const QuestionBox = ({id, title, paragraph, answer, e1,e2,e3,e4,e5}) => {
                         <span>{e5}</span>
                     </ChoiceList>
                     <UnderBox>
-                        <Button label={"제출"} onClick={() => {onClickToggle()}}/>
+                        <Button label={"제출하기"} onClick={() => {onClickToggle()}}/>
                         {toggleStatus ? 
                             submitAnswer({selected, answer}) : null}
                     </UnderBox>
@@ -114,7 +114,6 @@ const ChoiceList = styled.div`
 `; //
 const UnderBox = styled.div`
     box-sizing: border-box;
-    padding-right: 5rem;
-    padding: 2rem;
+    padding: 2rem 2rem 0 2rem;
 
 `;
