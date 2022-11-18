@@ -3,62 +3,35 @@ import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import {u1, u2, u3, u4, u5, u6, u7, u8} from "./FileIndex";
 
-export const UpperBox = ({id, title, type}) => {
-    return (
-        <UpperBoxStyle>
-            <Title>#{id+1} {title}</Title>
-            <Type src={type}/>
-        </UpperBoxStyle>
-    ); 
-};
-
-// {questionID, passageID, question_type, question, new_passage, answer, d1,d2,d3,d4}
-const QuestionBox = ({id, title, type, paragraph, answer, d1,d2,d3,d4}) => {
+// {passageID, question_type, question, new_passage, answer, e1,e2,e3,e4,e5}
+const QuestionBox = ({id, title, paragraph, answer, e1,e2,e3,e4,e5}) => {
     const questionTypeList = [u1, u2, u3, u4, u5, u6, u7, u8];
-
-    // 정답과 distractor를 랜덤하게 섞어주는 함수
-    const shuffleArray = array => {
-        for (let i = 0; i < array.length; i++) {
-          let j = Math.floor(Math.random() * (i + 1));
-          // [array[i], array[j]] = [array[j], array[i]];
-          const x = array[i];
-          array[i] = array[j];
-          array[j] = x;
-        }
-        return array;
-      };
-    let choiceList = [answer, d1,d2,d3,d4];
-    shuffleArray(choiceList);
     return (
-        <Wrapper>
             <BoxWrapper>
-                <UpperBox id={id} title={title} type={questionTypeList[type-1]}/>
+                <UpperBox>
+                    <Title>#{id+1} {title}</Title>
+                </UpperBox>
                 <Box>
                     <Paragraph>{paragraph}</Paragraph>
-                    <ChoiceList>① {choiceList[0]}</ChoiceList><br/>
-                    <ChoiceList>② {choiceList[1]}</ChoiceList><br/>
-                    <ChoiceList>③ {choiceList[2]}</ChoiceList><br/>
-                    <ChoiceList>④ {choiceList[3]}</ChoiceList><br/>
-                    <ChoiceList>⑤ {choiceList[4]}</ChoiceList><br/>
+                    <ChoiceList>① {e1}</ChoiceList><br/>
+                    <ChoiceList>② {e2}</ChoiceList><br/>
+                    <ChoiceList>③ {e3}</ChoiceList><br/>
+                    <ChoiceList>④ {e4}</ChoiceList><br/>
+                    <ChoiceList>⑤ {e5}</ChoiceList><br/>
                     
                 </Box>
             </BoxWrapper>
-        </Wrapper>
     );
 }
 export default QuestionBox;
 
-const Wrapper = styled.div`
-  justify-content : center;
-  padding: 4rem;    
-  padding-bottom: 1rem;
-  display: flex;
-`;
 const BoxWrapper = styled.div`
+
+    box-sizing: border-box;
     display: block;
     justify-content : center;
     width: 80%;
-    
+    padding: 2rem;
     @media(max-width: 1880px){
         width: 95%;
     }
@@ -70,12 +43,11 @@ const Box = styled.div`
     padding: 1.5rem;
     display: block;
 `;
-const UpperBoxStyle = styled.div`
+const UpperBox = styled.div`
     box-sizing: border-box;
     display: block;
     width: 100%;
-    min-height: 20%;
-    padding:0.5rem;
+    padding: 1rem;
     font-size: 1rem;
     font-weight: 900;
     color: black;
@@ -103,4 +75,13 @@ const ChoiceListNum = styled.img`
 `;
 const BtnShowAnswer = styled.button`
 
+`;
+const QBoxInnerWrapper = styled.div`
+    display: block;
+    justify-content : center;
+    width: 50%;
+
+    @media(max-width: 1880px){
+        width: 95%;
+    }
 `;
