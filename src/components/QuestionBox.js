@@ -16,6 +16,10 @@ const QuestionBox = ({id, title, paragraph, answer, e1,e2,e3,e4,e5}) => {
     const onClickToggle = (e) => {
         setToggleStatus(prevStatus => prevStatus ? false : true);
     }
+    const submitAnswer = ({selected, answer}) => {
+        if(selected==answer) return <ToggleMenu isCorrect={true} selected={selected} answer={answer}/>;
+        else return <ToggleMenu isCorrect={false} selected={selected} answer={answer}/>;
+    };
     const ToggleMenu = ({isCorrect, selected, answer}) => (
         <div className="pt-4 pb-8">
         <div className="flex flex-col w-full mx-auto px-4">
