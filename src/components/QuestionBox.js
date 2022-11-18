@@ -31,6 +31,7 @@ const BoxWrapper = styled.div`
     display: block;
     justify-content : center;
     width: 80%;
+    margin: auto;
     padding: 2rem;
     @media(max-width: 1880px){
         width: 95%;
@@ -38,7 +39,6 @@ const BoxWrapper = styled.div`
 `;
 const Box = styled.div`
     box-sizing: border-box;
-    width: 100%;
     border: 1px solid #999999;
     padding: 1.5rem;
     display: block;
@@ -46,7 +46,6 @@ const Box = styled.div`
 const UpperBox = styled.div`
     box-sizing: border-box;
     display: block;
-    width: 100%;
     padding: 1rem;
     font-size: 1rem;
     font-weight: 900;
