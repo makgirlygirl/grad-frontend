@@ -9,9 +9,28 @@ import SelectNum from "./SelectNum";
 const QuestionBox = ({id, title, paragraph, answer, e1,e2,e3,e4,e5}) => {
     const questionTypeList = [u1, u2, u3, u4, u5, u6, u7, u8];
     const [selected, setSelected] = useState(0);
+    const [isCorrect, setIsCorrect] = useState(false);
     const submitAnswer = () => {
         console.log(selected);
     }
+    const [toggleStatus, setToggleStatus] = useState(false);
+    const onClickToggle = (e) => {
+        setToggleStatus(prevStatus => prevStatus ? false : true);
+    }
+    const ToggleMenu = ({selected, answer}) => (
+        <div className="pt-4 pb-8">
+        <div className="flex flex-col w-full mx-auto px-4">
+            <div className="flex flex-col space-y-2 text-gray-500">
+                <Box>
+                    {{selected}=={answer} ? <div>정답이에요!</div> : <div>정답이 아니에요. 정답은 {answer}번이에요.</div>}
+                    
+                    선택한 답: {selected}<br/>
+                    정답: {answer}<br/>
+                </Box>
+            </div>
+        </div>
+        </div>
+    );
     return (
             <BoxWrapper>
                 <UpperBox>
@@ -40,7 +59,9 @@ const QuestionBox = ({id, title, paragraph, answer, e1,e2,e3,e4,e5}) => {
                         <span>{e5}</span>
                     </ChoiceList>
                     <UnderBox>
-                        <Button label={"제출"} onClick={() => {submitAnswer()}}/>
+                        <Button label={"제출"} onClick={() => {onClickToggle()}}/>
+                        {toggleStatus ? 
+                            <ToggleMenu answer={answer} selected={selected}/> : null}
                     </UnderBox>
                 </Box>
             </BoxWrapper>
