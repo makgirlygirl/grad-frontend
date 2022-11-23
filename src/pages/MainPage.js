@@ -20,9 +20,9 @@ const MainPage = () => {
             <div className='main-content-text-right'>
               <h1>
                 영어 공부,<br/>
-                이제 Soulmate와 함께 하세요.
+                이제 SOULMATE와 함께 하세요.
               </h1><br/>
-              <h3>자기주도 영어 학습 플랫폼, Soulmate</h3>
+              <h2>자기주도 영어 학습 플랫폼, SOULMATE</h2>
             </div>
             <MainImg src={MainImage1}/>
             </MainContent1>
@@ -30,7 +30,7 @@ const MainPage = () => {
             <MainImg src={MainImage3}/>
             <div className='main-content-text-left'>
               <h2>
-              Soulmate AI가 제작한<br/>
+              SOULMATE AI가 제작한<br/>
               1,600+개의 <br/>
               수능 기출 변형 문제 은행
               </h2><br/>

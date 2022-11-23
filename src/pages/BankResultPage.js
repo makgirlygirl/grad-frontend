@@ -28,7 +28,7 @@ const BankResultPage = () => {
             setQType(location.state.qTypeValue-1);
             setIsLoading(true);
             try {
-                const response = await axios.get(`http://localhost:9000/question/${location.state.qTypeValue}/`);
+                const response = await axios.get(`http://localhost:9000/question?type=${location.state.qTypeValue}&&num=${location.state.qNumValue}`);
                 setQuestionList(response.data);
                 // response.data는 DB에서 받아오는 문제의 개수 / location.state.qNumValue는 사용자가 요청한 문제 개수
                 response.data.length < location.state.qNumValue ? setQNum(response.data.length) : setQNum(location.state.qNumValue);
@@ -47,6 +47,8 @@ const BankResultPage = () => {
     }
     const generatePDF = async(qType) => {
         try{
+            // {SERVER_ADDR}/home/a1930008/docxDownload 에 저장되어 있는 download.docx 파일 저장하기
+            // 되나? 안 되면 S3에 저장하기??
             const response = await axios.get(`http://localhost:9000/get_docx/${qType}/`);
             console.log(response);
         } catch(error){
