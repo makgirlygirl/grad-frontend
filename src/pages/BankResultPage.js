@@ -51,6 +51,7 @@ const BankResultPage = () => {
             // 되나? 안 되면 S3에 저장하기??
             const response = await axios.get(`http://localhost:9000/get_docx/${qType}/`);
             console.log(response);
+            
         } catch(error){
             console.log(error);
         }
@@ -76,6 +77,9 @@ const BankResultPage = () => {
                 문제 <GR>{qNum}</GR>개를 찾았어요!
             </Description>
             <PDFButton>
+            <a href="/home/a1930008/docxDownload" download="download.docx">
+                <button>PDF로 보기</button>
+            </a>
                 <Button 
                     label="PDF로 보기"
                     onClick={generatePDF(qType)}
@@ -84,7 +88,7 @@ const BankResultPage = () => {
             <QBoxOuterWrapper>
                 <QBoxInnerWrapper>
                 {
-                questionList.slice(0,qNum).slice(0,postNum).map((it) => ( 
+                questionList.slice(0,postNum).map((it) => ( 
                     // {questionID, passageID, question_type, question, new_passage, answer, d1,d2,d3,d4}
                     <QuestionBox key={it.passageID} id={i++} 
                         title={it.question} 
