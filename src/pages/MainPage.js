@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Header from "../components/Header";
-import ExamplePhoto from "../assets/main/example-photo.png";
+import MainImage1 from "../assets/main/001.png";
+import MainImage2 from "../assets/main/002.png";
+import MainImage3 from "../assets/main/003.jpeg";
 import { Link } from "react-router-dom";
 import Bank from "../assets/category/bank_unchecked.svg";
 import Creator from "../assets/category/creator_unchecked.svg";
-import Bank_checked from '../assets/category/bank_checked.svg';
-import Creator_checked from "../assets/category/creator_checked.svg";
 
 const MainPage = () => {
     return (
@@ -20,17 +20,17 @@ const MainPage = () => {
             <div className='main-content-text-right'>
               <h1>
                 영어 공부,<br/>
-                이제 Soulmate와 함께 하세요.
+                이제 SOULMATE와 함께 하세요.
               </h1><br/>
-              <h3>자기주도 영어 학습 플랫폼, Soulmate</h3>
+              <h2>자기주도 영어 학습 플랫폼, SOULMATE</h2>
             </div>
-            <img src={ExamplePhoto}/>
+            <MainImg src={MainImage1}/>
             </MainContent1>
           <MainContent2>
-            <img src={ExamplePhoto}/>
+            <MainImg src={MainImage3}/>
             <div className='main-content-text-left'>
               <h2>
-              Soulmate AI가 제작한<br/>
+              SOULMATE AI가 제작한<br/>
               1,600+개의 <br/>
               수능 기출 변형 문제 은행
               </h2><br/>
@@ -50,7 +50,7 @@ const MainPage = () => {
                 <h5 className="green-font">실시간 문제 제작하러 가기 →</h5>
               </Link>
             </div>
-            <img src={ExamplePhoto}/>
+            <MainImg src={MainImage2}/>
           </MainContent3>
           <MainContent4/>
       </Wrapper>
@@ -77,7 +77,6 @@ const MainPage = () => {
     padding: 5%;
     justify-content:center;
   `;
-  
   const MainContent3 = styled.div`
     width: 100%;
     min-height: 70vh;
@@ -87,7 +86,6 @@ const MainPage = () => {
     padding: 10%;
     justify-content:center;
   `;
-  
   const MainContent4 = styled.div`
     width: 100%;
     min-height: 70vh;
@@ -95,6 +93,11 @@ const MainPage = () => {
     background: white;
     font-size: 50px;
     padding: 10%;
+  `;
+  const MainImg = styled.img`
+    width: 30%;
+    height: 30%;
+    margin: 0 2rem 0 2rem;
   `;
   const CategoryWrapper = styled.div`
     width: 100%;
