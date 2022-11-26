@@ -31,6 +31,13 @@ a {
 .load-more {
   padding: 2rem;
 }
+.btn {
+  background-color: white;
+}
+.btn.active {
+  background-color: green;
+  color: white;
+}
 
 /* ================== MEDIA QUERY ================== */
 @media (prefers-color-scheme: dark) {
