@@ -19,9 +19,16 @@ const CreatorResultPage = () => {
     let i=0; //문제 번호
 
     useEffect(()=> {
-        console.log(location.state.passageValue.passage);
-        setPassageID(location.state.passageValue.passageID);
-        //console.log(qType);
+        console.log(location.state.responseValue.new_passage);
+        setPassageID(location.state.responseValue.passageID);
+        setIsLoading(true);
+        try {
+            setQuestionList(location.state.responseValue);
+        } catch(error) {
+            console.log(error);
+            setQuestionList(ExampleQuestionList);
+        }
+        setIsLoading(false);
     }, [location]);
 
     const LoadMore = () => {
@@ -54,7 +61,7 @@ const CreatorResultPage = () => {
                     <QuestionBox key={it.questionID} id={i++} 
                         title={it.question} type={it.question_type} 
                         paragraph={it.new_passage} answer={it.answer} 
-                        d1={it.d1} d2={it.d2} d3={it.d3} d4={it.d4} />
+                        e1={it.e1} e2={it.e2} e3={it.e3} e4={it.e4} e5={it.e5}/>
                     )
                 )
             }

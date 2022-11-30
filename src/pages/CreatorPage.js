@@ -15,12 +15,17 @@ const CreatorPage = () => {
   const onChangePassage = (e) => {
     setPassage(e.target.value);
   }
-  const postPassage = (passage) => {
-    axios.post(`http://localhost:9000/new_passage/`, { "passage" : passage })
-      .then(response => {
-        console.log(response.data);
-        navigate("/creator/result", { state: { passageValue : response.data } });
-      });
+  const postPassage = async(passage) => {
+    console.log("POST");
+    let response;
+    try {
+      response = await axios.post(`http://localhost:9000/new_question/`, { "passage" : passage });
+      
+    } catch(error){
+      console.log(error);
+    }
+    console.log(response.data);
+    navigate("/creator/result", { state: { responseValue : response.data } });
   }
   return (
       <Wrapper>
