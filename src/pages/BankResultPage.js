@@ -77,9 +77,6 @@ const BankResultPage = () => {
                 문제 <GR>{qNum}</GR>개를 찾았어요!
             </Description>
             <PDFButton>
-            <a href="/home/a1930008/docxDownload" download="download.docx">
-                <button>PDF로 보기</button>
-            </a>
                 <Button 
                     label="PDF로 보기"
                     onClick={generatePDF(qType)}

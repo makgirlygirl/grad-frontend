@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import Button from "./Button";
-import {u1, u2, u3, u4, u5, u6, u7, u8} from "./FileIndex";
+//import {u1, u2, u3, u4, u5, u6, u7, u8} from "./FileIndex";
 import SelectNum from "./SelectNum";
 
 // {passageID, question_type, question, new_passage, answer, e1,e2,e3,e4,e5}
 const QuestionBox = ({id, title, paragraph, answer, e1,e2,e3,e4,e5}) => {
-    const questionTypeList = [u1, u2, u3, u4, u5, u6, u7, u8];
+//    const questionTypeList = [u1, u2, u3, u4, u5, u6, u7, u8];
     const [selected, setSelected] = useState(0);
-    //const [isCorrect, setIsCorrect] = useState(false);
     
     /* 제출 시 토글로 정답을 보여주기 위한 state */
     const [toggleStatus, setToggleStatus] = useState(false);
@@ -45,23 +44,23 @@ const QuestionBox = ({id, title, paragraph, answer, e1,e2,e3,e4,e5}) => {
                 <Box>
                     <Paragraph>{paragraph}</Paragraph>
                     <ChoiceList>
-                        <SelectNum num={1} onClick={()=>{setSelected(1)}}/>
+                        <SelectNum id={1} selected={selected} onClick={()=>{setSelected(1)}}/>
                         <span>{e1}</span>
                     </ChoiceList>
                     <ChoiceList>
-                        <SelectNum num={2} onClick={()=>{setSelected(2)}}/>
+                        <SelectNum id={2} selected={selected} onClick={()=>{setSelected(2)}}/>
                         <span>{e2}</span>
                     </ChoiceList>
                     <ChoiceList>
-                        <SelectNum num={3} onClick={()=>{setSelected(3)}}/>
+                        <SelectNum id={3} selected={selected} onClick={()=>{setSelected(3)}}/>
                         <span>{e3}</span>
                     </ChoiceList>
                     <ChoiceList>
-                        <SelectNum num={4} onClick={()=>{setSelected(4)}}/>
+                        <SelectNum id={4} selected={selected} onClick={()=>{setSelected(4)}}/>
                         <span>{e4}</span>
                     </ChoiceList>
                     <ChoiceList>
-                        <SelectNum num={5} onClick={()=>{setSelected(5)}}/>
+                        <SelectNum id={5} selected={selected} onClick={()=>{setSelected(5)}}/>
                         <span>{e5}</span>
                     </ChoiceList>
                     <UnderBox>
