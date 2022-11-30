@@ -19,10 +19,23 @@ const CreatorResultPage = () => {
     let i=0; //문제 번호
 
     useEffect(()=> {
-        console.log(location.state.passageValue.passage);
-        setPassageID(location.state.passageValue.passageID);
-        //console.log(qType);
+        const fetchData = async() => {
+            console.log(location.state.passageValue);
+            setIsLoading(true);
+            let response;
+            try {
+                response = await axios.post(`http://localhost:9000/new_question/`, { "passage" : location.state.passageValue });
+            } catch(error) {
+                console.log(error);
+            }
+            response = response.data;
+            console.log(response);
+            setQuestionList(response);
+            setIsLoading(false);
+        }
+        fetchData();
     }, [location]);
+
 
     const LoadMore = () => {
         setPostNum(prev => prev + 10);
@@ -44,34 +57,20 @@ const CreatorResultPage = () => {
         ) : (
         <>
             <Description>
-                새로운 지문으로부터 
-                문제 <GR>{qNum}</GR>개를 생성했어요!
+                새로운 지문으로부터 문제를 생성했어요!
             </Description>
             <>
             {
-                questionList.slice(0,qNum).slice(0,postNum).map((it) => ( 
+                questionList.map((it) => ( 
                     // {questionID, passageID, question_type, question, new_passage, answer, d1,d2,d3,d4}
-                    <QuestionBox key={it.questionID} id={i++} 
+                    <QuestionBox key={i++} id={i++} 
                         title={it.question} type={it.question_type} 
                         paragraph={it.new_passage} answer={it.answer} 
-                        d1={it.d1} d2={it.d2} d3={it.d3} d4={it.d4} />
+                        e1={it.e1} e2={it.e2} e3={it.e3} e4={it.e4} e5={it.e5}/>
                     )
                 )
             }
             </>
-            <div className="load-more">
-            {
-              postNum<qNum ? (
-                <div>
-                  <p>{postNum}/{qNum}</p> 
-                  <p>{qNum - postNum}개의 문제가 더 남아있어요!</p>
-                  <button onClick={LoadMore}>더 보기</button>
-                </div>
-              ):(
-                <h3>{qNum}개의 문제를 모두 풀었어요! 수고하셨습니다. </h3>
-              )
-            }
-          </div>
             </>
         )
         }
