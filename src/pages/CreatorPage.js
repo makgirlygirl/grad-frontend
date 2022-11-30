@@ -15,18 +15,6 @@ const CreatorPage = () => {
   const onChangePassage = (e) => {
     setPassage(e.target.value);
   }
-  const postPassage = async(passage) => {
-    console.log("POST");
-    let response;
-    try {
-      response = await axios.post(`http://localhost:9000/new_question/`, { "passage" : passage });
-      
-    } catch(error){
-      console.log(error);
-    }
-    console.log(response.data);
-    navigate("/creator/result", { state: { responseValue : response.data } });
-  }
   return (
       <Wrapper>
         <Header/>
@@ -47,7 +35,7 @@ const CreatorPage = () => {
         <TextWrapper><img src={Arrow}/></TextWrapper>
         <QuestionWrapper>
             <Button onClick={() => {
-                postPassage(passage);
+                navigate("/creator/result", { state: { passageValue:passage } });
             }}>GO!</Button>
         </QuestionWrapper>
       </Wrapper>
