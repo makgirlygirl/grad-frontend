@@ -38,7 +38,29 @@ a {
   background-color: green;
   color: white;
 }
+.word-file-btn {
 
+  box-sizing: border-box;
+  padding: 0.8rem;
+  font-size: 0.8rem;
+  background-color: white;
+  border: 3px solid rgba(58, 166, 100, 0.64);
+  border-radius: 4px;
+  min-width: 190px;
+}
+.show-answer-btn {
+  width: 10rem;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  border: 2px solid #999999;
+  border-radius: 12px;
+  background: rgba(153, 153, 153, 0);
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+.show-answer-btn.active {
+  background: rgba(153, 153, 153, 0.21);
+}
 /* ================== MEDIA QUERY ================== */
 @media (prefers-color-scheme: dark) {
   body {
