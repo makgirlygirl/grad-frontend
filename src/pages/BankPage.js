@@ -7,16 +7,23 @@ import { Link, useNavigate } from "react-router-dom";
 import Step1_Question from "../assets/bank/bank_step1.svg";
 import Step2_Question from "../assets/bank/bank_step2.svg";
 import Arrow from '../assets/main/arrow.svg';
-import QuestionTypeList, { bankQuestionTypeList } from "../assets/bank/QuestionTypeList";
 import axios from "axios";
 import { isElementOfType } from "react-dom/test-utils";
 import QuestionTypeButton from "../components/QuestionTypeButton";
 
+export const qTypeList = [ 
+    {id:1, label:"글의 목적/주제"},
+    {id:2, label:"일치/불일치"},
+    {id:3, label:"순서 배열"},
+    {id:4, label:"빈칸 추론"},
+    {id:5, label:"어휘"},
+    {id:6, label:"문장 삽입"},
+    {id:7, label:"흐름과 관계 없는 문장 찾기"},
+    {id:8, label:"요약문"},
+];
 const BankPage = () => {
     const navigate = useNavigate();
-
     const [qTypeNum, setQTypeNum] = useState(0);
-    const [qTypeList, setQTypeList] = useState(bankQuestionTypeList);
     
     const [qNum, setQNum] = useState(0);
     const onChangeQNum = (e) => {

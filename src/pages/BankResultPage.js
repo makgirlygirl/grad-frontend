@@ -6,9 +6,9 @@ import Bank_checked from '../assets/category/bank_checked.svg';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import QuestionBox from "../components/QuestionBox";
 import { ExampleQuestionList } from "../assets/bank/Example-QuestionList";
-import QuestionTypeList, { bankQuestionTypeList } from "../assets/bank/QuestionTypeList";
 import axios from "axios";
 import Button from "../components/Button";
+import { qTypeList } from "./BankPage";
 
 const BankResultPage = () => {
     const location = useLocation();
@@ -73,7 +73,7 @@ const BankResultPage = () => {
         ) : (
         <>
             <Description>
-                <GR>{bankQuestionTypeList[qType].label}</GR> 유형의 
+                <GR>{qTypeList[qType].label}</GR> 유형의 
                 문제 <GR>{qNum}</GR>개를 찾았어요!
             </Description>
             <PDFButton>
