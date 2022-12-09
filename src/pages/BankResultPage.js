@@ -76,6 +76,7 @@ const BankResultPage = () => {
             </Description>
             <WordFileButton>
                 <Button 
+                    className={'word-file-btn'}
                     label="시험지로 저장하기"
                     onClick={generatWordFile(qType)}
                 />

@@ -1,18 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-const Button = ({label, onClick}) => {
+const Button = ({label, className, onClick}) => {
     return (
-      <CustomBtn onClick={onClick}>{label}</CustomBtn>
+      <button className={className} onClick={onClick}>{label}</button>
     ); // 
   };
 export default Button;
-
-const CustomBtn = styled.button`
-  box-sizing: border-box;
-  padding: 0.8rem;
-  font-size: 0.8rem;
-  background-color: white;
-  border: 3px solid rgba(58, 166, 100, 0.64);
-  border-radius: 4px;
-  min-width: 190px;
-`; // min-width: 15%;

@@ -2,12 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import Button from "./Button";
-//import {u1, u2, u3, u4, u5, u6, u7, u8} from "./FileIndex";
 import SelectNum from "./SelectNum";
+import Swal from "sweetalert2";
 
-// {passageID, question_type, question, new_passage, answer, e1,e2,e3,e4,e5}
 const QuestionBox = ({id, title, paragraph, answer, e1,e2,e3,e4,e5}) => {
-//    const questionTypeList = [u1, u2, u3, u4, u5, u6, u7, u8];
     const [selected, setSelected] = useState(0);
     
     /* 제출 시 토글로 정답을 보여주기 위한 state */
@@ -36,6 +34,23 @@ const QuestionBox = ({id, title, paragraph, answer, e1,e2,e3,e4,e5}) => {
         </div>
         </div>
     );
+    /* 잘못된 문제 신고 시 */
+    const showAlert = () => {
+        const Toast = Swal.mixin({
+          toast:true,
+          position:'center-center',
+          showConfirmButton: false,
+                    timer: 1500,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+        })
+        Toast.fire({
+            icon: 'success',
+            title: `잘못된 문제 신고가 접수되었어요.`
+          });
+    } 
     return (
             <BoxWrapper>
                 <UpperBox>
@@ -64,10 +79,17 @@ const QuestionBox = ({id, title, paragraph, answer, e1,e2,e3,e4,e5}) => {
                         <span>{e5}</span>
                     </ChoiceList>
                     <UnderBox>
-                        <Button label={"제출하기"} onClick={() => {onClickToggle()}}/>
-                        {toggleStatus ? 
-                            submitAnswer({selected, answer}) : null}
+                        <Button 
+                            label='정답 확인'
+                            className={'show-answer-btn' + (toggleStatus? " active":"")} 
+                            onClick={() => {onClickToggle()}}/>
+                        <Button 
+                            label='잘못된 문제 신고하기'
+                            className='show-answer-btn' 
+                            onClick={() => {showAlert()}}/> 
                     </UnderBox>
+                    {toggleStatus ? 
+                            submitAnswer({selected, answer}) : null}
                 </Box>
             </BoxWrapper>
     ); 
@@ -114,5 +136,5 @@ const ChoiceList = styled.div`
 const UnderBox = styled.div`
     box-sizing: border-box;
     padding: 2rem 2rem 0 2rem;
-
+    display:flex;
 `;
