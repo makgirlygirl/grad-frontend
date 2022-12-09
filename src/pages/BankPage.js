@@ -10,22 +10,14 @@ import Arrow from '../assets/main/arrow.svg';
 import QuestionTypeList, { bankQuestionTypeList } from "../assets/bank/QuestionTypeList";
 import axios from "axios";
 import { isElementOfType } from "react-dom/test-utils";
+import QuestionTypeButton from "../components/QuestionTypeButton";
 
 const BankPage = () => {
     const navigate = useNavigate();
 
     const [qTypeNum, setQTypeNum] = useState(0);
     const [qTypeList, setQTypeList] = useState(bankQuestionTypeList);
-    const onClickQType = (id) => {
-        // 선택된 것 빼고는 모두 unchecked 되도록
-        
-        setQTypeList(
-            qTypeList.map((it)=>
-            it.id === id ? { ...it, checked: !it.checked } : it,
-            ),
-        );
-        setQTypeNum(id);
-    };
+    
     const [qNum, setQNum] = useState(0);
     const onChangeQNum = (e) => {
         setQNum(e.target.value);
@@ -39,7 +31,12 @@ const BankPage = () => {
         </CategoryWrapper>
         <div>
             <TextWrapper><img src={Step1_Question}/></TextWrapper>
-            <QuestionTypeList key="qTypeList" onClick={onClickQType} qTypeList={qTypeList}/>
+            {
+                qTypeList.map((it) => (
+                    <TypeWrapper>
+                        <QuestionTypeButton key={it.id} {...it} onClick={() => {setQTypeNum(it.id)}} selected={qTypeNum}/>
+                    </TypeWrapper>
+            ))}
         </div>
         <TextWrapper><img src={Arrow}/></TextWrapper>
         <div>
@@ -56,7 +53,7 @@ const BankPage = () => {
         <TextWrapper><img src={Arrow}/></TextWrapper>
         <QuestionWrapper>
             <Button onClick={() => {
-                if(qTypeList===bankQuestionTypeList || qNum===0)
+                if(qTypeNum===0 || qNum===0)
                     console.log("incomplete input"); // 뒤로 넘기지 않고, alert 보내주기
                 else {
                     console.log(qTypeNum);
