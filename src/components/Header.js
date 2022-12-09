@@ -9,38 +9,9 @@ import Creator_checked from "../assets/category/creator_checked.svg";
 
 const Header = () => {
   
-    /*
-    const [bankStatus, setBankStatus] = useState(false);
-    const [creatorStatus, setCreatorStatus] = useState(false);
-    if (pageStatus === 'B'){ // Bank
-      setBankStatus(true);
-      setCreatorStatus(false);
-    } else if (pageStatus === 'C') { // Creator
-      setBankStatus(false);
-      setCreatorStatus(true);
-    } else { // A (Main page)
-      setBankStatus(false);
-      setCreatorStatus(false);
-    }
-    //
-    const onClickBankStatus = () => {
-      setBankStatus(true);
-      setCreatorStatus(false);
-      }
-    const onClickCreatorStatus = () => {      
-      setBankStatus(false);
-      setCreatorStatus(true);
-    }
-    const onClickMainLogo = () => {
-      setBankStatus(false);
-      setCreatorStatus(false);
-    }
-    */
     return (
       <Wrapper>
-        <Bar>
-        icon icon icon
-        </Bar>
+        <Bar/>
         <LogoWrapper>
           <Link to="/">
             <img src={Logo} alt="Logo"/>

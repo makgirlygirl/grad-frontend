@@ -45,11 +45,9 @@ const BankResultPage = () => {
     const LoadMore = () => {
         setPostNum(prev => prev + 10);
     }
-    const generatePDF = async(qType) => {
+    const generatWordFile = async(qType) => {
         try{
-            // {SERVER_ADDR}/home/a1930008/docxDownload 에 저장되어 있는 download.docx 파일 저장하기
-            // 되나? 안 되면 S3에 저장하기??
-            const response = await axios.get(`http://localhost:9000/get_docx/${qType}/`);
+            const response = await axios.get(`http://localhost:9000/get_docx/`);
             console.log(response);
             
         } catch(error){
@@ -76,12 +74,12 @@ const BankResultPage = () => {
                 <GR>{qTypeList[qType].label}</GR> 유형의 
                 문제 <GR>{qNum}</GR>개를 찾았어요!
             </Description>
-            <PDFButton>
+            <WordFileButton>
                 <Button 
-                    label="PDF로 보기"
-                    onClick={generatePDF(qType)}
+                    label="시험지로 저장하기"
+                    onClick={generatWordFile(qType)}
                 />
-            </PDFButton>
+            </WordFileButton>
             <QBoxOuterWrapper>
                 <QBoxInnerWrapper>
                 {
@@ -132,7 +130,7 @@ const Description = styled.span`
 const GR = styled.span`
     color: green;
 `;
-const PDFButton = styled.div`
+const WordFileButton = styled.div`
     width: 100%;
     display: flex;
     justify-content : right;

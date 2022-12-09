@@ -24,7 +24,6 @@ export const qTypeList = [
 const BankPage = () => {
     const navigate = useNavigate();
     const [qTypeNum, setQTypeNum] = useState(0);
-    
     const [qNum, setQNum] = useState(0);
     const onChangeQNum = (e) => {
         setQNum(e.target.value);
