@@ -39,7 +39,6 @@ const BankResultPage = () => {
             setIsLoading(false);
         }
         fetchData(qType, qNum);
-        //console.log(qType);
     }, [location]);
 
     const LoadMore = () => {
@@ -47,12 +46,7 @@ const BankResultPage = () => {
     }
     return (
         <>
-        <Header/>
-        <CategoryWrapper>
-            <Link to='/bank'><img src={Bank_checked} alt="bank_checked"/></Link>
-            <Link to='/creator'><img src={Creator} alt="creator_unchecked"/></Link>
-        </CategoryWrapper>
-        
+        <Header category={'bank'}/>
         <BoxWrapper>
         {
         isLoading? (
@@ -107,7 +101,6 @@ const BankResultPage = () => {
         </>
     );
 };
-
 const BoxWrapper = styled.div`
     width: 100%;
     padding: 2rem 8rem 2rem 8rem;

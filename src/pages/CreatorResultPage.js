@@ -10,7 +10,6 @@ import axios from "axios";
 
 const CreatorResultPage = () => {
     const location = useLocation();
-
     const [isLoading, setIsLoading] = useState(false); //로딩중임을 표시하는 state
     const [postNum, setPostNum] = useState(10); // 'Load More' 기능 구현을 위한 state
     const [questionList, setQuestionList] = useState(ExampleQuestionList);
@@ -36,12 +35,7 @@ const CreatorResultPage = () => {
 
     return (
         <>
-        <Header/>
-        <CategoryWrapper>
-            <Link to='/bank'><img src={Bank} alt="bank_unchecked"/></Link>
-            <Link to='/creator'><img src={Creator_checked} alt="creator_checked"/></Link>
-        </CategoryWrapper>
-        
+        <Header category={'creator'}/>
         <BoxWrapper>
         {
         isLoading? (
