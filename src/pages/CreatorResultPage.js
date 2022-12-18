@@ -41,7 +41,7 @@ const CreatorResultPage = () => {
         isLoading? (
             <BoxWrapper>
                 <div class="clock"></div>
-                <div className="strong-font">
+                <div className="strong-font load-more">
                     입력한 지문을 바탕으로 SOULMATE AI가 문제를 제작하는 중이에요.<br/>
                     최대 120초가 걸려요.
                 </div>
