@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Header, { Logo } from "../components/Header";
+import Header from "../components/Header";
 import MainImage1 from "../assets/main/001.png";
 import MainImage2 from "../assets/main/002.png";
 import MainImage3 from "../assets/main/003.jpeg";
@@ -61,10 +61,10 @@ const MainPage = () => {
     width: 100%;
     min-height: 70vh;
     display: flex;
-    background: rgba(0, 173, 69, 0.8);
+    background: #00B247;
     padding: 5%;
     justify-content:center;
-    color: #24303C;
+    color: #FFFFFF;
   `;
   const MainContent2 = styled.div`
     width: 100%;

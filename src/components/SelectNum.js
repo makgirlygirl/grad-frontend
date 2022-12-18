@@ -8,11 +8,6 @@ const SelectNum = ({id, selected, onClick}) => {
         className={"btn" + (id==selected ? " active" : "")}
       >{id}</CircleBtn>
     );  
-    /*
-      value={idx}
-      className={"btn" + (idx == btnActive ? " active" : "")}
-      onClick={toggleActive}
-    */
   };
 
 const CircleBtn = styled.button`

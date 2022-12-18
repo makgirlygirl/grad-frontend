@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
-import LogoImg from '../assets/main/logo.png';
-import MainLogoImg from '../assets/main/logo-after.png';
+import LogoColor from '../assets/main/logo.png';
+import LogoWhite from '../assets/main/logo-after.png';
 import Category from "./Category";
 
 const Header = ({main, category}) => {
+  
     return (
       <Wrapper>
         <LogoWrapper>
           <Link to="/">{
-              main==true ? <Logo src={MainLogoImg} alt="MainLogo"/> : <Logo src={LogoImg} alt="Logo"/>
+              main==true ? <Logo src={LogoWhite} alt="LogoWhite"/> : <Logo src={LogoColor} alt="LogoColor"/>
           }</Link>
         </LogoWrapper>
         <Category label={category}/>
