@@ -1,28 +1,23 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Header from "../components/Header";
+import Header, { Logo } from "../components/Header";
 import MainImage1 from "../assets/main/001.png";
 import MainImage2 from "../assets/main/002.png";
 import MainImage3 from "../assets/main/003.jpeg";
 import { Link } from "react-router-dom";
-import Bank from "../assets/category/bank_unchecked.svg";
-import Creator from "../assets/category/creator_unchecked.svg";
 
 const MainPage = () => {
     return (
       <Wrapper>
           <Header/>
-          <CategoryWrapper>
-            <Link to='/bank'><img src={Bank} alt="bank_unchecked"/></Link>
-            <Link to='/creator'><img src={Creator} alt="creator_unchecked"/></Link>
-          </CategoryWrapper>
+          
           <MainContent1>
             <div className='main-content-text-right'>
-              <h1>
-                영어 공부,<br/>
+              <h2>
+                영어 공부,
                 이제 SOULMATE와 함께 하세요.
-              </h1><br/>
-              <h2>자기주도 영어 학습 플랫폼, SOULMATE</h2>
+              </h2><br/>
+              <h1>자기주도 영어 학습 플랫폼, <br/> SOULMATE</h1>
             </div>
             <MainImg src={MainImage1}/>
             </MainContent1>
@@ -35,7 +30,7 @@ const MainPage = () => {
               수능 기출 변형 문제 은행
               </h2><br/>
               <Link to="/bank">
-                <h5 className="green-font">Soulmate 문제 은행 바로 가기 →</h5>
+                <h5 className="green-font">SOULMATE 문제 은행 바로 가기 →</h5>
             </Link>
             </div>
           </MainContent2>
@@ -59,7 +54,10 @@ const MainPage = () => {
   }
   const Wrapper = styled.div`
     width: 100%;
+    font-family: 'Gothic A1', sans-serif;
   `;
+  //font-family: 'Nanum Gothic', sans-serif;
+  
   const MainContent1 = styled.div`
     width: 100%;
     min-height: 70vh;
@@ -98,11 +96,5 @@ const MainPage = () => {
     width: 30%;
     height: 30%;
     margin: 0 2rem 0 2rem;
-  `;
-  const CategoryWrapper = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content : center;
-    padding: 2rem;
   `;
   export default MainPage;

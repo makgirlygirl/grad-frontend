@@ -46,13 +46,13 @@ const CreatorResultPage = () => {
         {
         isLoading? (
             
-            <div class="box">
+            <BoxWrapper>
                 <div class="clock"></div>
                 <div className="strong-font">
                     입력한 지문을 바탕으로 SOULMATE AI가 문제를 제작하는 중입니다.<br/>
                     최대 60초가 소요됩니다.
                 </div>
-            </div>
+            </BoxWrapper>
         ) : (
         <>
             <Description>
