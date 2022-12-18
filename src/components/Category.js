@@ -38,7 +38,7 @@ const CategoryWrapper = styled.div`
     padding: 1rem;
 `;
 const CategoryLogo = styled.img`
-    width: 13rem;
+    height: 3.5rem;
     padding: 0 1rem 0 1rem;
 `;
   

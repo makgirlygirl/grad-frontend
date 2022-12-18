@@ -6,9 +6,8 @@ import LogoWhite from '../assets/main/logo-after.png';
 import Category from "./Category";
 
 const Header = ({main, category}) => {
-  
     return (
-      <Wrapper>
+      <Wrapper className={( main==true ? "green-bg" : "")}>
         <LogoWrapper>
           <Link to="/">{
               main==true ? <Logo src={LogoWhite} alt="LogoWhite"/> : <Logo src={LogoColor} alt="LogoColor"/>
@@ -30,7 +29,7 @@ const LogoWrapper = styled.div`
   padding: 2% 0 0 4%;
 `;
 const Logo = styled.img`
-  width: 16rem;
+  width: 18rem;
   padding: 2rem .5rem .5rem 2.5rem;
 `;
 export default Header;

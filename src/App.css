@@ -17,6 +17,9 @@ a {
 * {
   box-sizing: border-box;
 }
+.green-bg {
+  background-color: #00B247;
+}
 .strong-font {
   font-weight: 900;
   font-size: 1.25rem;
