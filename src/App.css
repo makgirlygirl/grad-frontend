@@ -49,6 +49,7 @@ h1 {
 }
 .load-more {
   padding: 2rem;
+  text-align: center;
 }
 .btn {
   background-color: white;
@@ -58,7 +59,6 @@ h1 {
   color: white;
 }
 .word-file-btn {
-
   box-sizing: border-box;
   padding: 0.8rem;
   font-size: 0.8rem;

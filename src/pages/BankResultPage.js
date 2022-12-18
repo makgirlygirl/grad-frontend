@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import Header from "../components/Header";
-import Creator from "../assets/category/creator_unchecked.svg";
-import Bank_checked from '../assets/category/bank_checked.svg';
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import QuestionBox from "../components/QuestionBox";
 import { ExampleQuestionList } from "../assets/bank/Example-QuestionList";
 import axios from "axios";
@@ -12,11 +10,8 @@ import { qTypeList } from "./BankPage";
 
 const BankResultPage = () => {
     const location = useLocation();
-    const navigate = useNavigate();
-
     const [isLoading, setIsLoading] = useState(false); //로딩중임을 표시하는 state
     const [postNum, setPostNum] = useState(10); // 'Load More' 기능 구현을 위한 state
-
     const [questionList, setQuestionList] = useState(ExampleQuestionList);
     const [qType, setQType] = useState(0);
     const [qNum, setQNum] = useState(0); 
@@ -88,15 +83,14 @@ const BankResultPage = () => {
                             />
                             </div>
                         ):(
-                            <h3>{qNum}개의 문제를 모두 풀었어요! 수고하셨습니다. </h3>
+                            <h3>와우!  {qNum}개의 문제를 모두 풀었어요 😎👍 </h3>
                         )
                         }
                     </div>
                 </QBoxInnerWrapper>
             </QBoxOuterWrapper>
             </>
-        )
-        }
+        )}
         </BoxWrapper>
         </>
     );
@@ -120,12 +114,6 @@ const WordFileButton = styled.a`
     display: flex;
     justify-content : right;
     padding-right: 2rem;
-`;
-const CategoryWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content : center;
-  padding: 2rem;
 `;
 const QBoxOuterWrapper = styled.div`
   justify-content : center;
