@@ -1,22 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
-import Logo from '../assets/main/logo.jpg';
-import Bank from "../assets/category/bank_unchecked.svg";
-import Creator from "../assets/category/creator_unchecked.svg";
-import Bank_checked from '../assets/category/bank_checked.svg';
-import Creator_checked from "../assets/category/creator_checked.svg";
+import LogoColor from '../assets/main/logo.png';
+import LogoWhite from '../assets/main/logo-after.png';
+import Category from "./Category";
 
-const Header = () => {
-  
+const Header = ({main, category}) => {
     return (
-      <Wrapper>
-        <Bar/>
+      <Wrapper className={( main==true ? "green-bg" : "")}>
         <LogoWrapper>
-          <Link to="/">
-            <img src={Logo} alt="Logo"/>
-          </Link>
+          <Link to="/">{
+              main==true ? <Logo src={LogoWhite} alt="LogoWhite"/> : <Logo src={LogoColor} alt="LogoColor"/>
+          }</Link>
         </LogoWrapper>
+        <Category label={category}/>
       </Wrapper>
     );
   };
@@ -31,12 +28,8 @@ const LogoWrapper = styled.div`
   text-align: left;
   padding: 2% 0 0 4%;
 `;
-const Bar = styled.div`
-  width: 100%;
-  height: 2rem;
-  background-color: #252F3D;
-  text-align: right;
-  color: white;
-  padding-right: 2rem; 
+const Logo = styled.img`
+  width: 18rem;
+  padding: 2rem .5rem .5rem 2.5rem;
 `;
 export default Header;

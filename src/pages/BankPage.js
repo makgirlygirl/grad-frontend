@@ -30,13 +30,9 @@ const BankPage = () => {
     }
     return (
       <Wrapper>
-      <Header/>
-        <CategoryWrapper>
-            <Link to='/bank'><img src={Bank_checked} alt="bank_checked"/></Link>
-            <Link to='/creator'><img src={Creator} alt="creator_unchecked"/></Link>
-        </CategoryWrapper>
+      <Header category='bank'/>
         <div>
-            <TextWrapper><img src={Step1_Question}/></TextWrapper>
+            <TextWrapper>Step 1. 검색할 문제의 유형을 선택하세요.</TextWrapper>
             {
                 qTypeList.map((it) => (
                     <TypeWrapper>
@@ -91,6 +87,7 @@ const TextWrapper = styled.div`
     justify-content:center;
     padding: 2.5rem;
     font-size: 1.5rem;
+    font-weight: bold;
 `;
 const TypeWrapper = styled.div`
     width: 100%;

@@ -10,12 +10,9 @@ import axios from "axios";
 
 const CreatorResultPage = () => {
     const location = useLocation();
-
     const [isLoading, setIsLoading] = useState(false); //로딩중임을 표시하는 state
     const [postNum, setPostNum] = useState(10); // 'Load More' 기능 구현을 위한 state
-    const [passageID, setPassageID] = useState(0); 
     const [questionList, setQuestionList] = useState(ExampleQuestionList);
-    const [qNum, setQNum] = useState(0);
     let i=0; //문제 번호
 
     useEffect(()=> {
@@ -36,24 +33,19 @@ const CreatorResultPage = () => {
         fetchData();
     }, [location]);
 
-
-    const LoadMore = () => {
-        setPostNum(prev => prev + 10);
-    }
     return (
         <>
-        <Header/>
-        <CategoryWrapper>
-            <Link to='/bank'><img src={Bank} alt="bank_unchecked"/></Link>
-            <Link to='/creator'><img src={Creator_checked} alt="creator_checked"/></Link>
-        </CategoryWrapper>
-        
+        <Header category={'creator'}/>
         <BoxWrapper>
         {
         isLoading? (
-            <div className="loader">
-                <span>Loading...</span>
-            </div>
+            <BoxWrapper>
+                <div class="clock"></div>
+                <div className="strong-font">
+                    입력한 지문을 바탕으로 SOULMATE AI가 문제를 제작하는 중이에요.<br/>
+                    최대 120초가 걸려요.
+                </div>
+            </BoxWrapper>
         ) : (
         <>
             <Description>
@@ -62,17 +54,15 @@ const CreatorResultPage = () => {
             <>
             {
                 questionList.map((it) => ( 
-                    // {questionID, passageID, question_type, question, new_passage, answer, d1,d2,d3,d4}
-                    <QuestionBox key={i++} id={i++} 
+                    <QuestionBox key={i++} id={i} 
                         title={it.question} type={it.question_type} 
                         paragraph={it.new_passage} answer={it.answer} 
                         e1={it.e1} e2={it.e2} e3={it.e3} e4={it.e4} e5={it.e5}/>
                     )
                 )
             }
-            </>
-            </>
-        )
+            </></>
+            )
         }
         </BoxWrapper>
         </>
@@ -90,6 +80,7 @@ const BoxWrapper = styled.div`
 const Description = styled.span`
     font-size: 1.5rem;
     font-weight: 700;
+    padding: 2rem 0 2rem 0;
 `;
 const GR = styled.span`
     color: green;

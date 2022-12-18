@@ -10,18 +10,13 @@ import axios from "axios";
 
 const CreatorPage = () => {
   const navigate = useNavigate();
-
   const [passage, setPassage] = useState("");
   const onChangePassage = (e) => {
     setPassage(e.target.value);
   }
   return (
       <Wrapper>
-        <Header/>
-        <CategoryWrapper>
-            <Link to='/bank'><img src={Bank} alt="bank_unchecked"/></Link>
-            <Link to='/creator'><img src={Creator_checked} alt="creator_checked"/></Link>
-        </CategoryWrapper>
+        <Header category='creator'/>
         <div>
           <TextWrapper><img src={Step1_Question}/></TextWrapper>
           <TypeWrapper>
@@ -51,12 +46,11 @@ const CategoryWrapper = styled.div`
   justify-content : center;
   padding: 2rem;
 `;
-
 const QuestionWrapper = styled.div`
     display: flex;
     justify-content:center;
     padding: 4rem;
-`
+`;
 const TextWrapper = styled.div`
     display: flex;
     justify-content:center;
@@ -90,8 +84,12 @@ const InputBox = styled.textarea`
   padding: 1rem;
   resize: none;
   font-size: 1rem;
+  font-family: 'Gothic A1', sans-serif;
   background: rgba(1, 129, 51, 0.13);
   border: 6px solid rgba(58, 166, 100, 0.64);
   border-radius: 4px;
+  @media(max-width: 1880px){
+    width: 60%;
+}
 `;
 export default CreatorPage;
