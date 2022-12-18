@@ -57,7 +57,7 @@ const MainPage = () => {
     width: 100%;
     min-height: 60vh;
     display: flex;
-    background: #00B247;
+    background: #7EC039;
     padding: 5%;
     justify-content: center;
     text-align: center;

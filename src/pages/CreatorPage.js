@@ -70,17 +70,19 @@ const Button = styled.button`
 `;
 const InputBox = styled.textarea`
   box-sizing: border-box;
-  width: 40%;
-  min-height: 450px;
+  width: 45%;
+  min-height: 500px;
   padding: 1rem;
   resize: none;
   font-size: 1rem;
   font-family: 'Gothic A1', sans-serif;
   background: rgba(1, 129, 51, 0.13);
   border: 6px solid rgba(58, 166, 100, 0.64);
-  border-radius: 4px;
+  border-radius: 6px;
   @media(max-width: 1880px){
     width: 60%;
-}
+  }@media(max-width: 1280px){
+    width: 80%;
+  }
 `;
 export default CreatorPage;
