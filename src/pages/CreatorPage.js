@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import Header from "../components/Header";
-import Bank from "../assets/category/bank_unchecked.svg";
-import Creator_checked from "../assets/category/creator_checked.svg";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Arrow from '../assets/main/arrow.svg';
-import Step1_Question from "../assets/creator/creator_step1.svg";
-import axios from "axios";
 
 const CreatorPage = () => {
   const navigate = useNavigate();
@@ -18,7 +14,7 @@ const CreatorPage = () => {
       <Wrapper>
         <Header category='creator'/>
         <div>
-          <TextWrapper><img src={Step1_Question}/></TextWrapper>
+          <TextWrapper>문제를 만들 지문을 입력하세요.</TextWrapper>
           <TypeWrapper>
             <InputBox
               key="passage"
@@ -40,12 +36,6 @@ const CreatorPage = () => {
 const Wrapper = styled.div`
     width: 100%;
 `;
-const CategoryWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content : center;
-  padding: 2rem;
-`;
 const QuestionWrapper = styled.div`
     display: flex;
     justify-content:center;
@@ -56,6 +46,7 @@ const TextWrapper = styled.div`
     justify-content:center;
     padding: 2.5rem;
     font-size: 1.5rem;
+    font-weight: bold;
 `;
 const TypeWrapper = styled.div`
     width: 100%;

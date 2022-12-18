@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import Header from "../components/Header";
-import Creator from "../assets/category/creator_unchecked.svg";
-import Bank_checked from '../assets/category/bank_checked.svg';
 import { Link, useNavigate } from "react-router-dom";
-import Step1_Question from "../assets/bank/bank_step1.svg";
-import Step2_Question from "../assets/bank/bank_step2.svg";
+import QnumDescription from "../assets/bank/bank_qnum_description.png";
 import Arrow from '../assets/main/arrow.svg';
-import axios from "axios";
 import { isElementOfType } from "react-dom/test-utils";
 import QuestionTypeButton from "../components/QuestionTypeButton";
 
@@ -42,7 +38,8 @@ const BankPage = () => {
         </div>
         <TextWrapper><img src={Arrow}/></TextWrapper>
         <div>
-        <TextWrapper><img src={Step2_Question}/></TextWrapper>
+        <TextWrapper>Step 2. 문제 개수를 지정해주세요.</TextWrapper>
+        <Wrapper><img src={QnumDescription}/></Wrapper>
         <TypeWrapper>
             <InputLine
                 key="qNum"
@@ -70,12 +67,7 @@ const BankPage = () => {
 
 const Wrapper = styled.div`
     width: 100%;
-`;
-const CategoryWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content : center;
-  padding: 2rem;
+    text-align: center;
 `;
 const QuestionWrapper = styled.div`
     display: flex;
