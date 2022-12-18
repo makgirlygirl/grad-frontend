@@ -36,6 +36,7 @@ const CategoryWrapper = styled.div`
     display: flex;
     justify-content : center;
     padding: 1rem;
+    padding-bottom: 3rem;
 `;
 const CategoryLogo = styled.img`
     height: 3.5rem;
