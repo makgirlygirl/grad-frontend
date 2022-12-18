@@ -42,7 +42,7 @@ const MainPage = () => {
             </div>
             <MainImg src={MainImage2}/>
           </MainContent3>
-          <MainContent4/>
+          <Footer>Copyright 2022. makgirlygirl. All rights reserved.</Footer>
       </Wrapper>
     
     )
@@ -95,17 +95,13 @@ const MainPage = () => {
       display: inline-block;
     }
   `;
-  const MainContent4 = styled.div`
+  const Footer = styled.div`
     width: 100%;
-    min-height: 60vh;
-    display: flex;
-    background: white;
-    font-size: 50px;
-    padding: 10%;
-    @media (max-width: 850px) {
-      display: inline-block;
-      text-align: center;
-    }
+    min-height: 5vh;
+    padding: 1rem;
+    text-align: center;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 12px;
   `;
   const MainImg = styled.img`
     width: 23rem;
