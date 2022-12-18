@@ -20,13 +20,14 @@ const QuestionBox = ({id, title, paragraph, answer, e1,e2,e3,e4,e5}) => {
     const ToggleMenu = ({isCorrect, selected, answer}) => (
         <div className="pt-4 pb-8">
         <div className="flex flex-col w-full mx-auto px-4">
-            <div className="flex flex-col space-y-2 text-gray-500">
+            <div className="flex flex-col space-y-2 text-gray-500 general-font">
                 <Box>
+                    <div className="strong-font">
                     {isCorrect ? 
                         <div>정답이에요!</div> : 
                         <div>정답이 아니에요. 정답은 {answer}번이에요.</div>
                     }
-                    <br/>
+                    </div>
                     선택한 답: {selected}<br/>
                     정답: {answer}<br/>
                 </Box>
@@ -58,6 +59,7 @@ const QuestionBox = ({id, title, paragraph, answer, e1,e2,e3,e4,e5}) => {
                 </UpperBox>
                 <Box>
                     <Paragraph>{paragraph}</Paragraph>
+                    <ChoiceBox>
                     <ChoiceList>
                         <SelectNum id={1} selected={selected} onClick={()=>{setSelected(1)}}/>
                         <span>{e1}</span>
@@ -88,6 +90,7 @@ const QuestionBox = ({id, title, paragraph, answer, e1,e2,e3,e4,e5}) => {
                             className='show-answer-btn' 
                             onClick={() => {showAlert()}}/> 
                     </UnderBox>
+                    </ChoiceBox>
                     {toggleStatus ? 
                             submitAnswer({selected, answer}) : null}
                 </Box>
@@ -132,9 +135,12 @@ const Paragraph = styled.div`
 const ChoiceList = styled.div`
     padding-top: .5rem;
     display:flex;
-`; //
+`; 
+const ChoiceBox = styled.div`
+    padding-top: 1rem;
+`
 const UnderBox = styled.div`
     box-sizing: border-box;
-    padding: 2rem 2rem 0 2rem;
+    padding: 1.5rem 2rem 1rem 2rem;
     display:flex;
 `;

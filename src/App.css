@@ -15,6 +15,13 @@ a {
 * {
   box-sizing: border-box;
 }
+.strong-font {
+  font-weight: 900;
+  font-size: 1.25rem;
+}
+.general-font {
+  line-height: 2rem;
+}
 .main-content-text-right {
   font-size: 1.5rem;
   display: block;
@@ -61,6 +68,75 @@ a {
 .show-answer-btn.active {
   background: rgba(153, 153, 153, 0.21);
 }
+
+
+/* ============ LOADING =========== */
+.clock{
+  border-radius: 180px;
+  border: 5px solid green;
+  height: 240px;
+  width: 240px;
+  position: relative;
+
+  top: 28%;
+  top: -webkit-calc(50% - 126px);
+  top: calc(50% - 126px);
+  left: 35%;
+  left: -webkit-calc(50% - 126px);
+  left: calc(50% - 126px);
+}
+.clock:after{
+  content: "";
+  position: absolute;
+  background-color: green;
+  top:6px;
+  left: 48%;
+  height: 114px;
+  width: 12px;
+  border-radius: 15px;
+  -webkit-transform-origin: 50% 97%;
+      transform-origin: 50% 97%;
+  -webkit-animation: grdAiguille 2s linear infinite;
+      animation: grdAiguille 2s linear infinite;
+}
+
+@-webkit-keyframes grdAiguille{
+    0%{-webkit-transform:rotate(0deg);}
+    100%{-webkit-transform:rotate(360deg);}
+}
+
+@keyframes grdAiguille{
+    0%{transform:rotate(0deg);}
+    100%{transform:rotate(360deg);}
+}
+
+.clock:before{
+  content: "";
+  position: absolute;
+  background-color: green;
+  top:18px;
+  left: 48%;
+  height: 105px;
+  width: 12px;
+  border-radius: 15px;
+  -webkit-transform-origin: 50% 94%;
+      transform-origin: 50% 94%;
+  -webkit-animation: ptAiguille 12s linear infinite;
+      animation: ptAiguille 12s linear infinite;
+}
+
+@-webkit-keyframes ptAiguille{
+    0%{-webkit-transform:rotate(0deg);}
+    100%{-webkit-transform:rotate(360deg);}
+}
+
+@keyframes ptAiguille{
+    0%{transform:rotate(0deg);}
+    100%{transform:rotate(360deg);}
+}
+
+
+
 /* ================== MEDIA QUERY ================== */
 @media (prefers-color-scheme: dark) {
   body {

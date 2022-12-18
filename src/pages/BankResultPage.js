@@ -45,15 +45,6 @@ const BankResultPage = () => {
     const LoadMore = () => {
         setPostNum(prev => prev + 10);
     }
-    const generatWordFile = async(qType) => {
-        try{
-            const response = await axios.get(`http://localhost:9000/get_docx/`);
-            console.log(response);
-            
-        } catch(error){
-            console.log(error);
-        }
-    }
     return (
         <>
         <Header/>
@@ -74,18 +65,16 @@ const BankResultPage = () => {
                 <GR>{qTypeList[qType].label}</GR> 유형의 
                 문제 <GR>{qNum}</GR>개를 찾았어요!
             </Description>
-            <WordFileButton>
+            <WordFileButton href="http://localhost:9000/get_docx">
                 <Button 
                     className={'word-file-btn'}
                     label="시험지로 저장하기"
-                    onClick={generatWordFile(qType)}
                 />
             </WordFileButton>
             <QBoxOuterWrapper>
                 <QBoxInnerWrapper>
                 {
                 questionList.slice(0,postNum).map((it) => ( 
-                    // {questionID, passageID, question_type, question, new_passage, answer, d1,d2,d3,d4}
                     <QuestionBox key={it.passageID} id={i++} 
                         title={it.question} 
                         paragraph={it.new_passage} answer={it.answer} 
@@ -93,21 +82,24 @@ const BankResultPage = () => {
                         )
                     )
                 }
+                    <div className="load-more strong-font">
+                    {
+                        postNum<qNum ? (
+                            <div>
+                            <p>{qNum - postNum}개의 문제가 더 남아있어요!</p>
+                            <Button 
+                                className='word-file-btn strong-font'
+                                label={qNum - postNum +"문제 더 풀기"}
+                                onClick={LoadMore}
+                            />
+                            </div>
+                        ):(
+                            <h3>{qNum}개의 문제를 모두 풀었어요! 수고하셨습니다. </h3>
+                        )
+                        }
+                    </div>
                 </QBoxInnerWrapper>
             </QBoxOuterWrapper>
-            <div className="load-more">
-            {
-              postNum<qNum ? (
-                <div>
-                  <p>{postNum}/{qNum}</p> 
-                  <p>{qNum - postNum}개의 문제가 더 남아있어요!</p>
-                  <button onClick={LoadMore}>더 보기</button>
-                </div>
-              ):(
-                <h3>{qNum}개의 문제를 모두 풀었어요! 수고하셨습니다. </h3>
-              )
-            }
-          </div>
             </>
         )
         }
@@ -131,7 +123,7 @@ const Description = styled.span`
 const GR = styled.span`
     color: green;
 `;
-const WordFileButton = styled.div`
+const WordFileButton = styled.a`
     width: 100%;
     display: flex;
     justify-content : right;
