@@ -9,8 +9,7 @@ import { Link } from "react-router-dom";
 const MainPage = () => {
     return (
       <Wrapper>
-          <Header/>
-          
+          <Header main={true}/>
           <MainContent1>
             <div className='main-content-text-right'>
               <h2>

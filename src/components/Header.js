@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import LogoImg from '../assets/main/logo.png';
+import MainLogoImg from '../assets/main/logo-after.png';
 import Category from "./Category";
 
-const Header = ({category}) => {
+const Header = ({main, category}) => {
     return (
       <Wrapper>
         <LogoWrapper>
-          <Link to="/">
-            <Logo src={LogoImg} alt="Logo"/>
-          </Link>
+          <Link to="/">{
+              main==true ? <Logo src={MainLogoImg} alt="MainLogo"/> : <Logo src={LogoImg} alt="Logo"/>
+          }</Link>
         </LogoWrapper>
         <Category label={category}/>
       </Wrapper>
@@ -27,22 +28,8 @@ const LogoWrapper = styled.div`
   text-align: left;
   padding: 2% 0 0 4%;
 `;
-export const Logo = styled.img`
-  width: 13rem;
-  padding: 1rem;
-`;
-const CategoryWrapper = styled.div`
-width: 100%;
-display: flex;
-justify-content : center;
-padding: 2rem;
-`;
-const Bar = styled.div`
-  width: 100%;
-  height: 2rem;
-  background-color: #252F3D;
-  text-align: right;
-  color: white;
-  padding-right: 2rem; 
+const Logo = styled.img`
+  width: 16rem;
+  padding: 2rem .5rem .5rem 2.5rem;
 `;
 export default Header;
