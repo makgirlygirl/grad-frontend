@@ -73,7 +73,7 @@ const MainPage = () => {
     min-height: 60vh;
     display: flex;
     background: white;
-    padding: 5%;
+    padding: 10%;
     justify-content: center;
     text-align: center;
     line-height: 3.5rem;
@@ -87,7 +87,7 @@ const MainPage = () => {
     min-height: 40vh;
     display: flex;
     background: #A6D8BA;
-    padding: 5%;
+    padding: 8%;
     justify-content: center;
     text-align: center;
     line-height: 3.5rem;
