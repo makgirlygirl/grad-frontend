@@ -50,9 +50,9 @@ const BankResultPage = () => {
         <BoxWrapper>
         {
         isLoading? (
-            <div className="loader">
-                <span>Loading...</span>
-            </div>
+            <BoxWrapper>
+                <div class="clock"></div>
+            </BoxWrapper>
         ) : (
         <>
             <Description>
@@ -104,7 +104,6 @@ const BankResultPage = () => {
 const BoxWrapper = styled.div`
     width: 100%;
     padding: 2rem 8rem 2rem 8rem;
-
     @media(max-width: 1880px){
         padding: 2rem 2rem 2rem 2rem;
     }
@@ -137,7 +136,6 @@ const QBoxInnerWrapper = styled.div`
     display: block;
     justify-content : center;
     width: 100%;
-
     @media(max-width: 1880px){
         width: 100%;
     }

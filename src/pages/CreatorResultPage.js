@@ -39,7 +39,6 @@ const CreatorResultPage = () => {
         <BoxWrapper>
         {
         isLoading? (
-            
             <BoxWrapper>
                 <div class="clock"></div>
                 <div className="strong-font">
