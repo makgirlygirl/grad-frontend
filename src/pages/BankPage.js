@@ -39,7 +39,7 @@ const BankPage = () => {
         <TextWrapper><img src={Arrow}/></TextWrapper>
         <div>
         <TextWrapper>Step 2. 문제 개수를 지정해주세요.</TextWrapper>
-        <Wrapper><img src={QnumDescription}/></Wrapper>
+        <Wrapper><DescImg src={QnumDescription}/></Wrapper>
         <TypeWrapper>
             <InputLine
                 key="qNum"
@@ -80,6 +80,14 @@ const TextWrapper = styled.div`
     padding: 2.5rem;
     font-size: 1.5rem;
     font-weight: bold;
+    @media (max-width: 720px) {
+        font-size: .8rem;
+      }
+`;
+const DescImg = styled.img`
+    @media (max-width: 720px) {
+        width: 13rem;
+    }
 `;
 const TypeWrapper = styled.div`
     width: 100%;
@@ -100,13 +108,13 @@ const InputLine = styled.input`
     background: transparent;
     text-align: center;
     outline: none;
-    @media (max-width: 750px) {
-        width: 50%;
+    @media (max-width: 720px) {
+        width: 40%;
         height: 1.5rem;
-    }@media (max-width: 420px) {
-        width: 80%;
+        font-size: 1rem;
+        padding: 2.5rem;
     }
-`; //  height: ${(props) => props.height || "10rem"};
+`; 
 
 const Button = styled.button`
     width: 36rem;

@@ -23,6 +23,9 @@ const TypeButton = styled.img`
     padding: 0.5rem;
     padding-left: 2rem;
     padding-right: 2rem;
+    @media (max-width: 720px) {
+        width: 12rem;
+        }
 `;
 export default QuestionTypeButton;
 
