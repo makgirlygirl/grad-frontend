@@ -7,6 +7,7 @@ import { ExampleQuestionList } from "../assets/bank/Example-QuestionList";
 import axios from "axios";
 import Button from "../components/Button";
 import { qTypeList } from "./BankPage";
+import { BoxWrapper, WordFileButton, Description } from "../components/Wrapper";
 
 const BankResultPage = () => {
     const location = useLocation();
@@ -94,25 +95,8 @@ const BankResultPage = () => {
         </>
     );
 };
-const BoxWrapper = styled.div`
-    width: 100%;
-    padding: 2rem 8rem 2rem 8rem;
-    @media(max-width: 1580px){
-        padding: 2rem 1rem 2rem 1rem;
-    }
-`;
-const Description = styled.span`
-    font-size: 1.5rem;
-    font-weight: 700;
-`;
 const GR = styled.span`
     color: green;
-`;
-const WordFileButton = styled.a`
-    width: 100%;
-    display: flex;
-    justify-content : right;
-    padding-right: 2rem;
 `;
 const QBoxOuterWrapper = styled.div`
   justify-content : center;

@@ -5,6 +5,8 @@ import { Link, useLocation } from "react-router-dom";
 import QuestionBox from "../components/QuestionBox";
 import { ExampleQuestionList } from "../assets/bank/Example-QuestionList";
 import axios from "axios";
+import Button from "../components/Button";
+import { BoxWrapper, WordFileButton, Description } from "../components/Wrapper";
 
 const CreatorResultPage = () => {
     const location = useLocation();
@@ -48,6 +50,12 @@ const CreatorResultPage = () => {
             <Description>
                 새로운 지문으로부터 문제를 생성했어요!
             </Description>
+            <WordFileButton href="http://localhost:9000/get_docx">
+                <Button
+                    className={'word-file-btn'}
+                    label="시험지로 저장하기"
+                />
+            </WordFileButton>
             <>
             {
                 questionList.map((it) => ( 
@@ -66,20 +74,5 @@ const CreatorResultPage = () => {
     );
 };
 
-const BoxWrapper = styled.div`
-    width: 100%;
-    padding: 2rem 8rem 2rem 8rem;
 
-    @media(max-width: 1880px){
-        padding: 2rem 2rem 2rem 2rem;
-    }
-`;
-const Description = styled.span`
-    font-size: 1.5rem;
-    font-weight: 700;
-    padding: 2rem 0 2rem 0;
-`;
-const GR = styled.span`
-    color: green;
-`;
 export default CreatorResultPage;

@@ -6,6 +6,7 @@ import QnumDescription from "../assets/bank/bank_qnum_description.png";
 import Arrow from '../assets/main/arrow.svg';
 import { isElementOfType } from "react-dom/test-utils";
 import QuestionTypeButton from "../components/QuestionTypeButton";
+import { GoButton, QuestionWrapper, TextWrapper, TypeWrapper, Wrapper } from "../components/Wrapper";
 
 export const qTypeList = [ 
     {id:1, label:"글의 목적/주제"},
@@ -39,7 +40,7 @@ const BankPage = () => {
         <TextWrapper><img src={Arrow}/></TextWrapper>
         <div>
         <TextWrapper>Step 2. 문제 개수를 지정해주세요.</TextWrapper>
-        <Wrapper><img src={QnumDescription}/></Wrapper>
+        <Wrapper><DescImg src={QnumDescription}/></Wrapper>
         <TypeWrapper>
             <InputLine
                 key="qNum"
@@ -51,40 +52,23 @@ const BankPage = () => {
         </div>
         <TextWrapper><img src={Arrow}/></TextWrapper>
         <QuestionWrapper>
-            <Button onClick={() => {
+            <GoButton onClick={() => {
                 if(qTypeNum===0 || qNum===0)
                     console.log("incomplete input"); // 뒤로 넘기지 않고, alert 보내주기
                 else {
                     console.log(qTypeNum);
                     navigate("/bank/result", { state: { qTypeValue:qTypeNum, qNumValue:qNum } });
                 }
-            }}>GO!</Button>
+            }}>GO!</GoButton>
         </QuestionWrapper>
       </Wrapper>
       
     );
 }
-
-const Wrapper = styled.div`
-    width: 100%;
-    text-align: center;
-`;
-const QuestionWrapper = styled.div`
-    display: flex;
-    justify-content:center;
-    padding: 4rem;
-`
-const TextWrapper = styled.div`
-    display: flex;
-    justify-content:center;
-    padding: 2.5rem;
-    font-size: 1.5rem;
-    font-weight: bold;
-`;
-const TypeWrapper = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content:center;
+const DescImg = styled.img`
+    @media (max-width: 720px) {
+        width: 13rem;
+    }
 `;
 const InputLine = styled.input`
     resize: none;
@@ -100,27 +84,11 @@ const InputLine = styled.input`
     background: transparent;
     text-align: center;
     outline: none;
-    @media (max-width: 750px) {
-        width: 50%;
+    @media (max-width: 720px) {
+        width: 40%;
         height: 1.5rem;
-    }@media (max-width: 420px) {
-        width: 80%;
+        font-size: 1rem;
+        padding: 2.5rem;
     }
-`; //  height: ${(props) => props.height || "10rem"};
-
-const Button = styled.button`
-    width: 36rem;
-    height: 4rem;
-    background: rgba(1, 129, 51, 0.78);
-    border: 5px solid rgba(58, 166, 100, 0.64);
-    box-shadow: 1px 1px 20px #ddd;
-    border-radius: 3rem;
-    font-size: 2rem;
-    font-family: 'Noto Sans KR';
-    font-weight: 700;
-    color: white;
-    &:hover{  
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      }
-`
+`; 
 export default BankPage;
