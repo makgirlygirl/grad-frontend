@@ -82,10 +82,4 @@ const Description = styled.span`
 const GR = styled.span`
     color: green;
 `;
-const CategoryWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content : center;
-  padding: 2rem;
-`;
 export default CreatorResultPage;

@@ -27,9 +27,16 @@ const LogoWrapper = styled.div`
   height: 10%;
   text-align: left;
   padding: 2% 0 0 4%;
+  @media(max-width: 1080px){
+    text-align: center;
+  }
 `;
 const Logo = styled.img`
   width: 18rem;
   padding: 2rem .5rem .5rem 2.5rem;
+  @media (max-width: 1080px) {
+    width: 10rem;
+    padding: 2rem 0 0 0;
+  }
 `;
 export default Header;

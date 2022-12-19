@@ -158,9 +158,12 @@ h1 {
 @media (max-width: 850px) {
   
   h2 {
-    font-size: 1.3rem;
+    font-size: 1rem;
   }
   h1 {
     font-size: 1.5rem;
   }  
+  h5 {
+    font-size: .8rem;
+  }
 }
