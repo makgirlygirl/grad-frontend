@@ -48,6 +48,7 @@ const InputBox = styled.textarea`
     width: 60%;
   }@media(max-width: 1280px){
     width: 80%;
+    font-size: .6rem;
   }
 `;
 export default CreatorPage;

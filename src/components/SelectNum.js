@@ -24,5 +24,14 @@ const CircleBtn = styled.button`
     border-radius: 1rem;
     line-height: 1rem;
     border: .15rem solid green;
+
+  @media(max-width: 720px){
+    width: 100%;
+    font-size: .6rem;
+    width: 20px;
+    height: 20px;
+    line-height: 0;
+    border: .08rem solid green;
+  }
 `;
 export default SelectNum;
