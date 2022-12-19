@@ -84,8 +84,7 @@ const BankResultPage = () => {
                             </div>
                         ):(
                             <h3>와우!  {qNum}개의 문제를 모두 풀었어요 😎👍 </h3>
-                        )
-                        }
+                        )}
                     </div>
                 </QBoxInnerWrapper>
             </QBoxOuterWrapper>
@@ -98,8 +97,8 @@ const BankResultPage = () => {
 const BoxWrapper = styled.div`
     width: 100%;
     padding: 2rem 8rem 2rem 8rem;
-    @media(max-width: 1880px){
-        padding: 2rem 2rem 2rem 2rem;
+    @media(max-width: 1580px){
+        padding: 2rem 1rem 2rem 1rem;
     }
 `;
 const Description = styled.span`
@@ -119,13 +118,13 @@ const QBoxOuterWrapper = styled.div`
   justify-content : center;
   padding: 2rem 4rem 2rem 4rem;    
   display: flex;
+  @media(max-width: 1580px){
+    padding: 2rem 0 2rem 0;
+}
 `;
 const QBoxInnerWrapper = styled.div`
     display: block;
     justify-content : center;
     width: 100%;
-    @media(max-width: 1880px){
-        width: 100%;
-    }
 `;
 export default BankResultPage;

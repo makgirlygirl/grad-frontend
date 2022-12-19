@@ -37,10 +37,16 @@ const CategoryWrapper = styled.div`
     justify-content : center;
     padding: 1rem;
     padding-bottom: 3rem;
+    @media (max-width: 1080px) {
+        padding-bottom: 0;
+      }
 `;
 const CategoryLogo = styled.img`
     height: 3.5rem;
     padding: 0 1rem 0 1rem;
+    @media(max-width: 1080px){
+        height: 2rem;
+    }
 `;
   
   export default Category;

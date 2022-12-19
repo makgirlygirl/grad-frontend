@@ -63,9 +63,10 @@ const MainPage = () => {
     text-align: center;
     line-height: 5rem;
     color: #FFFFFF;
-    @media (max-width: 850px) {
+    @media (max-width: 1080px) {
       display: inline-block;
       line-height: 4rem;
+      min-height: 40vh;
     }
   `;
   const MainContent2 = styled.div`
@@ -77,9 +78,10 @@ const MainPage = () => {
     justify-content: center;
     text-align: center;
     line-height: 3.5rem;
-    @media (max-width: 850px) {
+    @media (max-width: 1080px) {
       display: inline-block;
       line-height: 3rem;
+      min-height: 40vh;
     }
   `;
   const MainContent3 = styled.div`
@@ -91,8 +93,9 @@ const MainPage = () => {
     justify-content: center;
     text-align: center;
     line-height: 3.5rem;
-    @media (max-width: 850px) {
+    @media (max-width: 1080px) {
       display: inline-block;
+      min-height: 30vh;
     }
   `;
   const Footer = styled.div`
@@ -107,10 +110,10 @@ const MainPage = () => {
     width: 23rem;
     height: fit-content;
     margin: 0 2rem 0 2rem;
-    @media (max-width: 1450px) {
+    @media (max-width: 1580px) {
       width: 20rem;
-    }@media (max-width: 850px) {
-      width: 20rem;
+    }@media (max-width: 1080px) {
+      width: 7rem;
     }
   `;
   export default MainPage;

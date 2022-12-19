@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import Header from "../components/Header";
-import Creator_checked from "../assets/category/creator_checked.svg";
-import Bank from '../assets/category/bank_unchecked.svg';
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import QuestionBox from "../components/QuestionBox";
 import { ExampleQuestionList } from "../assets/bank/Example-QuestionList";
 import axios from "axios";
@@ -11,7 +9,6 @@ import axios from "axios";
 const CreatorResultPage = () => {
     const location = useLocation();
     const [isLoading, setIsLoading] = useState(false); //로딩중임을 표시하는 state
-    const [postNum, setPostNum] = useState(10); // 'Load More' 기능 구현을 위한 state
     const [questionList, setQuestionList] = useState(ExampleQuestionList);
     let i=0; //문제 번호
 
@@ -84,11 +81,5 @@ const Description = styled.span`
 `;
 const GR = styled.span`
     color: green;
-`;
-const CategoryWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content : center;
-  padding: 2rem;
 `;
 export default CreatorResultPage;

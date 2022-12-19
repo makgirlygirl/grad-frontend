@@ -106,8 +106,11 @@ const BoxWrapper = styled.div`
     width: 80%;
     margin: auto;
     padding: 2rem;
-    @media(max-width: 1880px){
-        width: 95%;
+    @media(max-width: 1580px){
+        width: 90%;
+    } @media(max-width: 1080px){
+        width: 100%;
+        padding: 2rem 0 0 0;
     }
 `;
 const Box = styled.div`
