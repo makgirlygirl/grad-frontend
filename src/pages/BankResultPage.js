@@ -108,7 +108,7 @@ const Description = styled.span`
 const GR = styled.span`
     color: green;
 `;
-const WordFileButton = styled.a`
+export const WordFileButton = styled.a`
     width: 100%;
     display: flex;
     justify-content : right;
