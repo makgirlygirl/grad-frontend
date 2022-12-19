@@ -1,7 +1,7 @@
 /** styled component를 이용해 BankPage, CreatorPage 에서 사용할 Wrapper를 정의하는 파일 */
 import styled from 'styled-components';
 
-
+/** Intro page */
 export const Wrapper = styled.div`
     width: 100%;
     text-align: center;
@@ -26,6 +26,24 @@ export const TypeWrapper = styled.div`
     display: flex;
     justify-content:center;
 `;
+
+/** Result pages */
+export const BoxWrapper = styled.div`
+    width: 100%;
+    padding: 2rem 8rem 2rem 8rem;
+    @media(max-width: 1580px){
+        padding: 2rem 1rem 2rem 1rem;
+    }
+`;
+export const Description = styled.span`
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 2rem 0 2rem 0;
+    @media(max-width: 720px){
+        font-size: 1rem;
+    }
+`;
+/** Buttons */
 export const GoButton = styled.button`
     width: 36rem;
     height: 4rem;
@@ -40,4 +58,10 @@ export const GoButton = styled.button`
     &:hover{  
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       }
+`;
+export const WordFileButton = styled.a`
+    width: 100%;
+    display: flex;
+    justify-content : right;
+    padding-right: 2rem;
 `;

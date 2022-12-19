@@ -86,7 +86,7 @@ const QuestionBox = ({id, title, paragraph, answer, e1,e2,e3,e4,e5}) => {
                             className={'show-answer-btn' + (toggleStatus? " active":"")} 
                             onClick={() => {onClickToggle()}}/>
                         <Button 
-                            label='잘못된 문제 신고하기'
+                            label='잘못된 문제 신고'
                             className='show-answer-btn' 
                             onClick={() => {showAlert()}}/> 
                     </UnderBox>
@@ -130,20 +130,33 @@ const UpperBox = styled.div`
     background: rgba(58, 166, 100, 0.4);
     border: 2px solid rgba(1, 129, 51, 0.78);
     border-radius: 5px;
+    @media(max-width: 720px){
+        font-size: .75rem;   
+        padding: .7rem .5rem .7rem .5rem;
+    }
 `;
 const Paragraph = styled.div`
     border: 2px solid #999999;  
     padding: 1rem;
+    @media(max-width: 720px){
+        font-size: .55rem;
+    }
 `;
 const ChoiceList = styled.div`
     padding-top: .5rem;
     display:flex;
+    @media(max-width: 720px){
+        font-size: .55rem;
+    }
 `; 
 const ChoiceBox = styled.div`
     padding-top: 1rem;
-`
+`;
 const UnderBox = styled.div`
     box-sizing: border-box;
     padding: 1.5rem 2rem 1rem 2rem;
     display:flex;
+    @media(max-width: 720px){
+        padding: 1rem 1rem .5rem 1rem;
+    }
 `;

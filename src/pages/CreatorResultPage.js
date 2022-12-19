@@ -6,7 +6,7 @@ import QuestionBox from "../components/QuestionBox";
 import { ExampleQuestionList } from "../assets/bank/Example-QuestionList";
 import axios from "axios";
 import Button from "../components/Button";
-import { WordFileButton } from "./BankResultPage";
+import { BoxWrapper, WordFileButton, Description } from "../components/Wrapper";
 
 const CreatorResultPage = () => {
     const location = useLocation();
@@ -74,20 +74,5 @@ const CreatorResultPage = () => {
     );
 };
 
-const BoxWrapper = styled.div`
-    width: 100%;
-    padding: 2rem 8rem 2rem 8rem;
 
-    @media(max-width: 1880px){
-        padding: 2rem 2rem 2rem 2rem;
-    }
-`;
-const Description = styled.span`
-    font-size: 1.5rem;
-    font-weight: 700;
-    padding: 2rem 0 2rem 0;
-`;
-const GR = styled.span`
-    color: green;
-`;
 export default CreatorResultPage;

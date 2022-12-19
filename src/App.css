@@ -155,7 +155,7 @@ h1 {
     background: white;
   }
 }
-@media (max-width: 850px) {
+@media (max-width: 720px) {
   
   h2 {
     font-size: 1rem;
@@ -165,5 +165,19 @@ h1 {
   }  
   h5 {
     font-size: .8rem;
+  }
+
+  .strong-font {
+    font-size: .7rem;
+  }
+  .general-font {
+    font-size: .55rem;
+    line-height: 1rem;
+  }
+  .show-answer-btn {
+    width: 7rem;
+    padding: 0.2rem;
+    border-radius: 14px;
+    font-size: .4rem;
   }
 }
