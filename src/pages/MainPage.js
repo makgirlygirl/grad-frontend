@@ -114,6 +114,8 @@ const MainPage = () => {
       width: 20rem;
     }@media (max-width: 1080px) {
       width: 7rem;
+      height: fit-content;
+      margin: 0 0 0 0;
     }
   `;
   export default MainPage;

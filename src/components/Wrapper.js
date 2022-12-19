@@ -38,7 +38,7 @@ export const BoxWrapper = styled.div`
 export const Description = styled.span`
     font-size: 1.5rem;
     font-weight: 700;
-    padding: 2rem 0 2rem 0;
+    padding: 0;
     @media(max-width: 720px){
         font-size: 1rem;
     }
@@ -58,6 +58,11 @@ export const GoButton = styled.button`
     &:hover{  
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       }
+    @media(max-width: 720px){
+        width: 18rem;
+        height: 2rem;  
+        font-size: 1rem;
+    }
 `;
 export const WordFileButton = styled.a`
     width: 100%;

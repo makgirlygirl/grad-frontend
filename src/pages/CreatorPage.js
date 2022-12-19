@@ -42,7 +42,7 @@ const InputBox = styled.textarea`
   font-size: 1rem;
   font-family: 'Gothic A1', sans-serif;
   background: rgba(1, 129, 51, 0.13);
-  border: 6px solid rgba(58, 166, 100, 0.64);
+  border: 4px solid rgba(58, 166, 100, 0.64);
   border-radius: 6px;
   @media(max-width: 1880px){
     width: 60%;

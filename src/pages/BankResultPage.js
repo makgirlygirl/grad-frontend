@@ -8,6 +8,7 @@ import axios from "axios";
 import Button from "../components/Button";
 import { qTypeList } from "./BankPage";
 import { BoxWrapper, WordFileButton, Description } from "../components/Wrapper";
+import {isMobile} from "react-device-detect";
 
 const BankResultPage = () => {
     const location = useLocation();
@@ -55,12 +56,16 @@ const BankResultPage = () => {
                 <GR>{qTypeList[qType].label}</GR> 유형의 
                 문제 <GR>{qNum}</GR>개를 찾았어요!
             </Description>
-            <WordFileButton href="http://localhost:9000/get_docx">
-                <Button 
-                    className={'word-file-btn'}
-                    label="시험지로 저장하기"
-                />
-            </WordFileButton>
+            {
+                isMobile ? 
+                <></> 
+                : <WordFileButton href="http://localhost:9000/get_docx">
+                    <Button 
+                        className={'word-file-btn'}
+                        label="시험지로 저장하기"
+                    />
+                </WordFileButton>
+            }
             <QBoxOuterWrapper>
                 <QBoxInnerWrapper>
                 {

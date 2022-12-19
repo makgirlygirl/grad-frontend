@@ -7,6 +7,7 @@ import { ExampleQuestionList } from "../assets/bank/Example-QuestionList";
 import axios from "axios";
 import Button from "../components/Button";
 import { BoxWrapper, WordFileButton, Description } from "../components/Wrapper";
+import {isMobile} from "react-device-detect";
 
 const CreatorResultPage = () => {
     const location = useLocation();
@@ -50,12 +51,16 @@ const CreatorResultPage = () => {
             <Description>
                 새로운 지문으로부터 문제를 생성했어요!
             </Description>
-            <WordFileButton href="http://localhost:9000/get_docx">
-                <Button
-                    className={'word-file-btn'}
-                    label="시험지로 저장하기"
-                />
-            </WordFileButton>
+            {
+                isMobile ? 
+                <></> 
+                : <WordFileButton href="http://localhost:9000/get_docx">
+                    <Button 
+                        className={'word-file-btn'}
+                        label="시험지로 저장하기"
+                    />
+                </WordFileButton>
+            }
             <>
             {
                 questionList.map((it) => ( 
@@ -67,12 +72,9 @@ const CreatorResultPage = () => {
                 )
             }
             </></>
-            )
-        }
+        )}
         </BoxWrapper>
         </>
     );
 };
-
-
 export default CreatorResultPage;
